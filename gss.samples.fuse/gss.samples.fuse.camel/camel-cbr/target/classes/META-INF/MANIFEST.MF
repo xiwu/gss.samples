@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1442827332734
+Build-Jdk: 1.7.0_72
+Build-Timestamp: Mon, 21 Sep 2015 17:22:05 +0800
+Built-By: wuxiaohui
+Bundle-Description: Fabric8 the open source integration platform
+Bundle-DocURL: http://redhat.com
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: Camel Blueprint Route
+Bundle-SymbolicName: camel-blueprint
+Bundle-Vendor: Red Hat
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.mycompany.camel.blueprint;version="1.0.0.SNAPSHOT"
+Implementation-Title: Camel Blueprint Route
+Implementation-URL: http://www.jboss.org/products/fuse/gss.samples/gss.s
+ amples.fuse/gss.samples.fuse.camel/camel-cbr
+Implementation-Vendor: Red Hat
+Implementation-Vendor-Id: com.redhat
+Implementation-Version: 1.0.0-SNAPSHOT
+Import-Package: org.osgi.service.blueprint;version="[1.0.0,2.0.0)"
+Java-Vendor: Oracle Corporation
+Java-Version: 1.7.0_72
+Os-Arch: amd64
+Os-Name: Linux
+Os-Version: 2.6.32-504.23.4.el6.x86_64
+Scm-Connection: scm:git:git@github.com:fabric8io/fabric8.git/jboss-fuse-
+ parent/gss.samples/gss.samples.fuse/gss.samples.fuse.camel/camel-cbr
+Scm-Revision: UNKNOWN
+Scm-Url: https://github.com/xiwu/gsscasework/gss.samples.fuse/gss.sample
+ s.fuse.camel/camel-cbr
+Specification-Title: Camel Blueprint Route
+Specification-Vendor: Red Hat
+Specification-Version: 1.0.0-SNAPSHOT
+Tool: Bnd-1.50.0
