@@ -1,0 +1,4 @@
+com/redhat/gpe/demo/camel/EnableCORSInterceptor.class
+com/redhat/gpe/demo/camel/model/Customer.class
+com/redhat/gpe/demo/camel/CustomerServiceBean.class
+com/redhat/gpe/demo/camel/CustomerServiceResource.class
