@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:amq="http://activemq.apache.org/schema/core"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+  <!-- This creates an embedded ActiveMQ Broker -->
+  <broker xmlns="http://activemq.apache.org/schema/core" useJmx="true" persistent="false">
+    <transportConnectors>
+      <transportConnector uri="tcp://localhost:61616" />
+    </transportConnectors>
+  </broker>
+
+  <!-- Lets connect the Camel ActiveMQ component to the embedded broker.
+       See http://camel.apache.org/activemq.html for more information.
+  -->
+  <!--
+  <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="brokerURL" value="tcp://localhost:61616"/>
+  </bean>
+  -->
+  <bean id="helloBean" class="com.mycompany.camel.blueprint.HelloBean">
+      <property name="say" value="Hi from Camel"/>
+  </bean>
+  <!-- Here is a sample which processes the input files
+         (leaving them in place - see the 'noop' flag), and
+         sends them on a JMS queue. This queue is watched by
+         another route which then performs content based
+         routing on the messages using XPath. 
+  -->
+	<!--  Source Broker Details-->
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://localhost:61616" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+	</bean>
+	<!--  Source Broker Details End-->
+	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		init-method="start" destroy-method="stop">
+		<property name="maxConnections" value="8" />
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+	</bean>
+
+	<bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+		<property name="connectionFactory" ref="pooledConnectionFactory" />
+		<property name="concurrentConsumers" value="20" />
+	</bean>
+	
+	<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="acknowledgementModeName" value="CLIENT_ACKNOWLEDGE" />
+		<property name="configuration" ref="jmsConfig"/>
+	</bean>
+	
+	<!--  Destination Broker Details-->
+	<bean id="fd7activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="brokerURL" value="tcp://localhost:61618" />
+		<property name="userName" value="admin" />
+		<property name="password" value="admin" />
+		<property name="acknowledgementModeName" value="CLIENT_ACKNOWLEDGE" />
+	</bean>  
+  <!-- 
+    <route>
+      <from uri="file:src/data?noop=true"/>
+      <to uri="activemq:personnel.records"/>
+    </route>
+    <route>
+      <from uri="activemq:personnel.records"/>
+      <choice>
+        <when>
+          <xpath>/person/city = 'London'</xpath>
+          <to uri="file:target/messages/uk"/>
+        </when>
+        <otherwise>
+          <to uri="file:target/messages/others"/>
+        </otherwise>
+      </choice>
+    </route>
+ --><camelContext xmlns="http://camel.apache.org/schema/spring">
+  <route>
+    <from uri="activemq:SourceQueue"/>
+    <setProperty propertyName="auditEnvironment">
+      <simple>DEVELOPMENT</simple>
+    </setProperty>
+    <to uri="bean:helloBean?method=hello"/>
+    <wireTap uri="fd7activemq:DestinationQueue"/>
+  </route>
+</camelContext>
+
+</beans>
