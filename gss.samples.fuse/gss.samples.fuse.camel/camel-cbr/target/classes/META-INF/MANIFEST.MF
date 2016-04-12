@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1459491288881
+Bnd-LastModified: 1460431179952
 Build-Jdk: 1.7.0_80
 Built-By: wuxiaohui
 Bundle-Description: Fabric8 the open source integration platform
