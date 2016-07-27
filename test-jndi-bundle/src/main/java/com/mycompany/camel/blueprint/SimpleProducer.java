@@ -6,6 +6,9 @@ import org.apache.commons.logging.LogFactory;
 import javax.jms.*;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NameClassPair;
+import javax.naming.NamingEnumeration;
+import javax.naming.Reference;
 
 public class SimpleProducer {
     private static final Log LOG = LogFactory.getLog(SimpleProducer.class);
@@ -38,6 +41,26 @@ public class SimpleProducer {
             Context context = new InitialContext();
             Object lookedUpObject = context.lookup(CONNECTION_FACTORY_NAME);
             LOG.info("lookedUpObject: " + lookedUpObject);
+            
+			NamingEnumeration<NameClassPair> ne = context.list("");
+			while(ne.hasMore()) {
+				NameClassPair ncp = ne.next();
+				LOG.info("ncp classname: "+ ncp.getClassName() + " name:"+ncp.getName());
+			}
+            if(lookedUpObject instanceof javax.naming.Reference) {
+            Reference ob = (javax.naming.Reference)context.lookup(CONNECTION_FACTORY_NAME);
+
+            LOG.info("FactoryClass :" + ob.getFactoryClassName());
+
+            LOG.info("FactoryClassLocation : "+ob.getFactoryClassLocation());
+
+            LOG.info("getClass : "+ob.getClass().getName());
+ 
+            LOG.info("Class : " +ob.getClassName());
+
+            LOG.info("getClass : "+ob.getClass().getName());
+
+            }  
             ConnectionFactory factory = (ConnectionFactory) context.lookup(CONNECTION_FACTORY_NAME);
             Destination destination = (Destination) context.lookup(DESTINATION_NAME);
 
