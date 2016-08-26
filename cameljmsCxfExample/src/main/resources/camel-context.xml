@@ -77,7 +77,7 @@
     <from uri="direct:start"/>
     <setExchangePattern pattern="InOut"/>
     <to uri="log: query$$$$$${body}$$$$$$" />
-    <to uri="cxf:bean:productServiceEndpoint?defaultOperationName=getProductDetails&amp;headerFilterStrategy=#cxfHeaderFilterStrategy"/>
+    <to uri="cxf:bean:productServiceEndpoint?defaultOperationName=getProductDetails&amp;dataFormat=POJO&amp;headerFilterStrategy=#cxfHeaderFilterStrategy"/>
   </route>
 </camelContext>
 	<bean id="productServiceImpl" class="com.javacodegeeks.camel.ProductServiceImpl"/>

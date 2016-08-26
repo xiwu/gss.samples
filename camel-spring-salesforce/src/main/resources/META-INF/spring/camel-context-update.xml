@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:salesforceconfig.properties</value>
+		</property>
+	</bean>
+	<bean id="salesforce"
+		class="org.apache.camel.component.salesforce.SalesforceComponent">
+
+		<property name="loginConfig">
+			<bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+				<property name="loginUrl" value="${loginUrl}"></property>
+				<property name="userName" value="${userName}"></property>
+				<property name="password" value="${password}"></property>
+				<property name="clientId" value="${clientId}"></property>
+				<property name="clientSecret" value="${clientSecret}"></property>
+			</bean>
+		</property>
+		<property name="config">
+			<bean
+				class="org.apache.camel.component.salesforce.SalesforceEndpointConfig">
+				<property name="sObjectName" value="${sObjectName}"></property>
+				<property name="sObjectClass" value="${sObjectClass}"></property>
+			</bean>
+		</property>
+		<property name="packages" value="${sObjectDTOPackages}"></property>
+	</bean>
+
+	<!-- use JsonHelper to use org.codehaus.jackson to convert json String to Account --><!-- remember name for later --><camelContext id="context-4aebda16-642a-4bfb-8da3-885920efe171" xmlns="http://camel.apache.org/schema/spring">
+  <route id="update-salesforce-route">
+    <from uri="file:work/camel-salesforce/input"/>
+    <log message="Receiving file ${file:name}"/>
+    <log message="Sending file ${file:name} to Salesforce"/>
+    <bean method="readFile" beanType="org.jboss.quickstarts.fuse.salesforce.JsonHelper"/>
+    <setHeader headerName="name">
+      <simple>${body.name}</simple>
+    </setHeader>
+    <log message="Creating or updating Account with body ${body}..."/>
+    <to uri="salesforce:updateSObject?sObjectName=Account" id="_to1"/>
+    <choice>
+      <when>
+        <simple>${body} != null</simple>
+        <log message="Created Account ${headers.name} with result success=${body.success} and errors=${body.errors}"/>
+      </when>
+      <otherwise>
+        <log message="Updated Account ${headers.name}"/>
+      </otherwise>
+    </choice>
+  </route>
+</camelContext>
+
+</beans>

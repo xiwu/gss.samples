@@ -15,8 +15,12 @@
 		</route>
 		<route id="wsClient">
 			<from uri="direct:start" />
+			 <to uri="log: query$$$$$${body}$$$$$$" />
+			 <to uri="file:work/camel-salesforce/output"></to>
+			 <!--
 			<to
 				uri="cxf:bean:productServiceEndpoint?defaultOperationName=getProductDetails&amp;headerFilterStrategy=#cxfHeaderFilterStrategy" />
+				  -->
 		</route>
 	</camelContext>
 
