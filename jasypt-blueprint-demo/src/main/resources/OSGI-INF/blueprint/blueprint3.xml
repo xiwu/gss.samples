@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+    xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+    xmlns:enc="http://karaf.apache.org/xmlns/jasypt/v1.0.0"
+    xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0 http://aries.apache.org/schemas/blueprint-ext/blueprint-ext.xsd
+       http://karaf.apache.org/xmlns/jasypt/v1.0.0 http://karaf.apache.org/xmlns/jasypt/v1.0.0
+       "
+    default-activation="lazy">
+
+    <cm:property-placeholder id="demo.billing.datasource3" 
+            persistent-id="demo.billing.datasource3"
+            placeholder-prefix="${" placeholder-suffix="}">
+        <cm:default-properties>
+            <cm:property name="billing.db.serverName"   value="localhost"/>
+            <cm:property name="billing.db.portNumber"   value="5432"/>
+            <cm:property name="billing.db.databaseName" value="dccn"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    
+    <ext:property-placeholder id="demo.billing.datasource.secure"
+            placeholder-prefix="%{" placeholder-suffix="}"> 
+        <ext:location>file:///home/wuxiaohui/workspace/jasypt-blueprint-demo/src/main/resources/demo.billing.datasource3.properties</ext:location>
+    </ext:property-placeholder>  
+    <enc:property-placeholder> 
+    	<enc:encryptor class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor"> 
+    		<property name="config"> 
+    			<bean class="org.jasypt.encryption.pbe.config.SimpleStringPBEConfig"> 
+                    <property name="algorithm" value="PBEWITHSHA256AND128BITAES-CBC-BC" />
+                    <property name="password" value="11" />
+                    <property name="providerClassName" value="org.bouncycastle.jce.provider.BouncyCastleProvider" />
+    			</bean> 
+    		</property>
+    	</enc:encryptor>
+   </enc:property-placeholder>
+   
+     <bean id="helloBean3" class="com.mycompany.jasypt.blueprint.HelloBean">
+      <property name="say" value="Hi from ext:property-placeholder %{billing.db.password}"/>
+  </bean>
+      <bean id="helloBean23" class="com.mycompany.jasypt.blueprint.HelloBean">
+      <property name="say" value="Hi from cm:property-placeholder ${billing.db.password}"/>
+  </bean> 
+    <camelContext trace="false" id="blueprintContext3" xmlns="http://camel.apache.org/schema/blueprint">
+    <route id="timerToLog3">
+        <from uri="timer:foo?period=5000"/>
+        <setBody>
+            <method ref="helloBean3" method="hello"></method>
+        </setBody>
+        <log message="The message contains ${body}"/>
+        <setBody>
+            <method ref="helloBean23" method="hello"></method>
+        </setBody>
+        <log message="The message contains ${body}"/>
+        <to uri="mock:result"/>
+    </route>
+</camelContext>
+
+</blueprint>
