@@ -1,0 +1,15 @@
+<v1:getMeteoData xmlns:v1="http://frequentis.com/MeteoWebService/v1_5">
+    <metRequest>
+        <RequestId>RQ1</RequestId>
+        <Requests>
+            <Request>
+                <RequestType>Atis</RequestType>
+                <RequestSubId>WS1</RequestSubId>
+                <MaximumNumberOfMessages>2</MaximumNumberOfMessages>
+                <Identifiers>
+                    <Identifier>NZCH</Identifier>
+                </Identifiers>
+            </Request>
+        </Requests>
+    </metRequest>
+</v1:getMeteoData>

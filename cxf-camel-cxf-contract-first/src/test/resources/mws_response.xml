@@ -1,0 +1,38 @@
+      <v1:getMeteoDataResponse xmlns:v1="http://frequentis.com/MeteoWebService/v1_5">
+         <!--Optional:-->
+         <return>
+            <RequestId>gero et</RequestId>
+            <!--1 or more repetitions:-->
+            <Responses>
+               <OriginalRequestType>sonoras imperio</OriginalRequestType>
+               <OriginalRequestSubId>quae divum incedo</OriginalRequestSubId>
+               <!--Optional:-->
+               <RequestTime>
+                  <DateTime>2006-08-20T01:27:14+08:00</DateTime>
+               </RequestTime>
+               <MeteoMessages>
+                  <!--1 or more repetitions:-->
+                  <MeteoMessage>
+                     <RequestType>turbine corripuit</RequestType>
+                     <MessageType>regemque dedit</MessageType>
+                     <!--Optional:-->
+                     <Identifier>fremunt celsa</Identifier>
+                     <!--Optional:-->
+                     <IdentifierName>ferant rapidi</IdentifierName>
+                     <!--Optional:-->
+                     <ReceiveTime>
+                        <DateTime>2016-01-02T03:07:42</DateTime>
+                     </ReceiveTime>
+                     <!--Optional:-->
+                     <ValidTime>
+                        <DateTime>2012-01-08T03:42:56</DateTime>
+                     </ValidTime>
+                     <!--Optional:-->
+                     <MessageContentText>profundum quippe ferant</MessageContentText>
+                     <!--Optional:-->
+                     <MessageContentBinary>cid:503186976590</MessageContentBinary>
+                  </MeteoMessage>
+               </MeteoMessages>
+            </Responses>
+         </return>
+      </v1:getMeteoDataResponse>

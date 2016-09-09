@@ -1,0 +1,162 @@
+<wsdl:definitions name="MeteoWebService" targetNamespace="http://frequentis.com/MeteoWebService/v1_5" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://frequentis.com/MeteoWebService/v1_5">
+   <wsdl:types>
+      <xs:schema targetNamespace="http://frequentis.com/MeteoWebService/v1_5/types/response" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://frequentis.com/MeteoWebService/v1_5/types/response" xmlns:ns1="http://frequentis.com/MeteoWebService/v1_5/types/common">
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/common"/>
+         <xs:complexType name="MeteoResponseContainerType">
+            <xs:sequence>
+               <xs:element name="RequestId" type="xs:string"/>
+               <xs:element maxOccurs="unbounded" name="Responses" type="tns:MeteoResponseType"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="MeteoResponseType">
+            <xs:sequence>
+               <xs:element name="OriginalRequestType" type="xs:string"/>
+               <xs:element name="OriginalRequestSubId" type="xs:string"/>
+               <xs:element minOccurs="0" name="RequestTime" type="ns1:DateTimeType"/>
+               <xs:element name="MeteoMessages">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="MeteoMessage" type="tns:MeteoMessageType"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="MeteoMessageType">
+            <xs:sequence>
+               <xs:element name="RequestType" type="xs:string"/>
+               <xs:element name="MessageType" type="xs:string"/>
+               <xs:element minOccurs="0" name="Identifier" type="xs:string"/>
+               <xs:element minOccurs="0" name="IdentifierName" type="xs:string"/>
+               <xs:element minOccurs="0" name="ReceiveTime" type="ns1:DateTimeType"/>
+               <xs:element minOccurs="0" name="ValidTime" type="ns1:DateTimeType"/>
+               <xs:element minOccurs="0" name="MessageContentText" type="xs:string"/>
+               <xs:element minOccurs="0" name="MessageContentBinary" type="xs:base64Binary"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+      <xs:schema targetNamespace="http://frequentis.com/MeteoWebService/v1_5/types/request" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://frequentis.com/MeteoWebService/v1_5/types/request" xmlns:ns1="http://frequentis.com/MeteoWebService/v1_5/types/common">
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/common"/>
+         <xs:complexType name="MeteoRequestContainerType">
+            <xs:sequence>
+               <xs:element name="RequestId" type="xs:string"/>
+               <xs:element minOccurs="0" name="ReceivedSinceTime" type="ns1:DateTimeType"/>
+               <xs:element name="Requests">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Request" type="tns:MeteoRequestType"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="MeteoRequestType">
+            <xs:sequence>
+               <xs:element name="RequestType" type="xs:string"/>
+               <xs:element name="RequestSubId" type="xs:string"/>
+               <xs:element minOccurs="0" name="MaximumNumberOfMessages" type="xs:int"/>
+               <xs:element minOccurs="0" name="ValidTimeInterval" type="ns1:DateTimeIntervalType"/>
+               <xs:element minOccurs="0" name="ReceiveTimeInterval" type="ns1:DateTimeIntervalType"/>
+               <xs:element minOccurs="0" name="Identifiers">
+                  <xs:complexType>
+                     <xs:sequence>
+                        <xs:element maxOccurs="unbounded" name="Identifier" type="xs:string"/>
+                     </xs:sequence>
+                  </xs:complexType>
+               </xs:element>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+      <xs:schema targetNamespace="http://frequentis.com/MeteoWebService/v1_5/types/fault" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <xs:complexType name="MeteoFaultEntry">
+            <xs:sequence>
+               <xs:element name="RequestSubID" type="xs:string"/>
+               <xs:element name="ErrorString" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+      <xs:schema targetNamespace="http://frequentis.com/MeteoWebService/v1_5/types/common" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://frequentis.com/MeteoWebService/v1_5/types/common">
+         <xs:complexType name="DateTimeType">
+            <xs:sequence>
+               <xs:element name="DateTime" type="xs:dateTime"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="DateTimeIntervalType">
+            <xs:sequence>
+               <xs:element name="FromTime" type="tns:DateTimeType"/>
+               <xs:element name="ToTime" type="tns:DateTimeType"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://frequentis.com/MeteoWebService/v1_5" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://frequentis.com/MeteoWebService/v1_5" xmlns:ns3="http://frequentis.com/MeteoWebService/v1_5/types/response" xmlns:ns2="http://frequentis.com/MeteoWebService/v1_5/types/request" xmlns:ns1="http://frequentis.com/MeteoWebService/v1_5/types/common" xmlns:ns0="http://frequentis.com/MeteoWebService/v1_5/types/fault">
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/common"/>
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/request"/>
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/response"/>
+         <xs:import namespace="http://frequentis.com/MeteoWebService/v1_5/types/fault"/>
+         <xs:element name="getMeteoData" type="tns:getMeteoData"/>
+         <xs:element name="getMeteoDataResponse" type="tns:getMeteoDataResponse"/>
+         <xs:element name="getVersionInformation" type="tns:getVersionInformation"/>
+         <xs:element name="getVersionInformationResponse" type="tns:getVersionInformationResponse"/>
+         <xs:complexType name="getVersionInformation">
+            <xs:sequence/>
+         </xs:complexType>
+         <xs:complexType name="getVersionInformationResponse">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="return" type="tns:VersionInformationType"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="VersionInformationType">
+            <xs:sequence>
+               <xs:element name="Name" type="xs:string"/>
+               <xs:element name="Version" type="xs:string"/>
+               <xs:element name="BuildNumber" type="xs:string"/>
+               <xs:element name="BuildDate" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="getMeteoData">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="metRequest" type="ns2:MeteoRequestContainerType"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:complexType name="getMeteoDataResponse">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="return" type="ns3:MeteoResponseContainerType"/>
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="MeteoFault" type="tns:MeteoFault"/>
+         <xs:complexType name="MeteoFault">
+            <xs:sequence>
+               <xs:element name="numberOfErrors" nillable="true" type="xs:int"/>
+               <xs:element maxOccurs="unbounded" minOccurs="0" name="errors" type="ns0:MeteoFaultEntry"/>
+               <xs:element minOccurs="0" name="message" type="xs:string"/>
+            </xs:sequence>
+         </xs:complexType>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="getMeteoDataResponse">
+      <wsdl:part element="ns1:getMeteoDataResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="getVersionInformation">
+      <wsdl:part element="ns1:getVersionInformation" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="MeteoFault">
+      <wsdl:part element="ns1:MeteoFault" name="MeteoFault"/>
+   </wsdl:message>
+   <wsdl:message name="getMeteoData">
+      <wsdl:part element="ns1:getMeteoData" name="parameters"/>
+   </wsdl:message>
+   <wsdl:message name="getVersionInformationResponse">
+      <wsdl:part element="ns1:getVersionInformationResponse" name="parameters"/>
+   </wsdl:message>
+   <wsdl:portType name="MeteoWebService">
+      <wsdl:operation name="getVersionInformation">
+         <wsdl:input message="ns1:getVersionInformation" name="getVersionInformation"/>
+         <wsdl:output message="ns1:getVersionInformationResponse" name="getVersionInformationResponse"/>
+      </wsdl:operation>
+      <wsdl:operation name="getMeteoData">
+         <wsdl:input message="ns1:getMeteoData" name="getMeteoData"/>
+         <wsdl:output message="ns1:getMeteoDataResponse" name="getMeteoDataResponse"/>
+         <wsdl:fault message="ns1:MeteoFault" name="MeteoFault"/>
+      </wsdl:operation>
+   </wsdl:portType>
+</wsdl:definitions>

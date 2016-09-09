@@ -1,0 +1,32 @@
+<wsdl:definitions name="MeteoWebServiceImplService" targetNamespace="http://mws.frequentis.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://mws.frequentis.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://frequentis.com/MeteoWebService/v1_5">
+   <wsdl:import location="b.wsdl" namespace="http://frequentis.com/MeteoWebService/v1_5"/>
+   <wsdl:binding name="MeteoWebServiceImplServiceSoapBinding" type="ns1:MeteoWebService">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="getVersionInformation">
+         <soap:operation soapAction="" style="document"/>
+         <wsdl:input name="getVersionInformation">
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getVersionInformationResponse">
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="getMeteoData">
+         <soap:operation soapAction="" style="document"/>
+         <wsdl:input name="getMeteoData">
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output name="getMeteoDataResponse">
+            <soap:body use="literal"/>
+         </wsdl:output>
+         <wsdl:fault name="MeteoFault">
+            <soap:fault name="MeteoFault" use="literal"/>
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="MeteoWebServiceImplService">
+      <wsdl:port binding="tns:MeteoWebServiceImplServiceSoapBinding" name="MeteoWebServiceImplPort">
+         <soap:address location="http://localhost:8080/MeteoWebService-1.5/MeteoWebService"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
