@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://camel.apache.org/schema/cxf"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+        http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+       ">
+
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<route id="wsRoute">
+			<from uri="cxf:bean:productServiceEndpoint" />
+			<bean ref="productServiceImpl" />
+		</route>
+		<route id="wsClient">
+			<from uri="direct:start" />
+			 <to uri="log: query$$$$$${body}$$$$$$" />
+			 <!-- for case3  -->
+			<setBody>
+                <constant>{&quot;test&quot;:&quot;sample&quot;}</constant>     
+             </setBody> 			 
+			<to  uri="cxf:bean:productServiceEndpoint?defaultOperationName=getProductDetails&amp;headerFilterStrategy=#cxfHeaderFilterStrategy"/>
+			<to uri="log: here will print the status 200"></to>
+			<to uri="myProcessor"></to>
+			<setBody>
+                <constant>{&quot;test&quot;:&quot;sample&quot;}</constant>     
+             </setBody> 
+			<to uri="http://localhost:9000/helloWorldSession?throwExceptionOnFailure=false"></to>
+			    <to uri="log: here will print the status 404 "></to>
+				<to uri="myProcessor"></to>
+		</route>
+	</camelContext>
+
+	<bean id="productServiceImpl" class="com.javacodegeeks.camel.ProductServiceImpl"/>
+    <bean id="myProcessor" class="com.javacodegeeks.camel.MyProcessor"/>
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" />
+ <!--
+ case 1 :http://localhost:8181/cxf//factorial : o/p 404
+ case 2 :http://localhost:8181/cxf/factorial/getFactorial : o/p success
+ case 3 :<arg0></arg0> is blank for WS i/p : org.apache.cxf.interceptor.Fault exception thrown @ container
+ case 4 :endpointName="ns1:factorialServicePort2" actually it is endpointName="ns1:factorialServicePort" : o/p : serviceConstructionException: Could not find def of service 
+ case 5 : service is down o/p:'404: Not Found' when communicating with http://localhost:8181/cxf/factorial/
+ -->
+ 
+ 
+ <!-- case1
+	<cxf:cxfEndpoint id="productServiceEndpoint"
+		address="http://localhost:${port1}//productService" serviceClass="com.javacodegeeks.ws.product_service.Product" />
+ -->
+ <!-- case2 
+ 	<cxf:cxfEndpoint id="productServiceEndpoint"
+		address="http://localhost:${port1}/productService" serviceClass="com.javacodegeeks.ws.product_service.Product" />
+-->	
+ <!-- case3 -->
+ 	<cxf:cxfEndpoint id="productServiceEndpoint"
+		address="http://localhost:${port1}/productService" serviceClass="com.javacodegeeks.ws.product_service.Product" />
+		
+				
+	<bean id="cxfHeaderFilterStrategy" class="org.apache.camel.component.cxf.common.header.CxfHeaderFilterStrategy">
+		<property name="messageHeaderFilters">
+			<list>
+				<bean class="com.javacodegeeks.camel.CxfHeaderFilter" />
+			</list>
+		</property>	
+	</bean>
+	
+</beans>

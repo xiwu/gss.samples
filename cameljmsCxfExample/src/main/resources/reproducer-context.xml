@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://cxf.apache.org/blueprint/core" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" xmlns:shell="http://karaf.apache.org/xmlns/shell/v1.0.0" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd">
+
+  <cxf:bus bus="test" id="test">
+    <cxf:properties>
+      <entry key="org.apache.cxf.transport.http.async.ioThreadCount" value="10"/>
+      <entry key="org.apache.cxf.transport.http.async.SO_KEEPALIVE" value="true"/>
+      <entry key="org.apache.cxf.transport.http.async.selectInterval" value="10"/>
+      <entry key="org.apache.cxf.transport.http.async.usePolicy" value="ASYNC_ONLY"/>
+    </cxf:properties>
+  </cxf:bus>
+
+<bean id="jmsConnectionFactory" 
+   class="org.apache.activemq.ActiveMQConnectionFactory">
+   <property name="brokerURL" value="tcp://localhost:61616" />
+   <property name="userName" value="admin"/>
+   <property name="password" value="admin"/>
+   
+</bean>
+ 
+<bean id="pooledConnectionFactory" 
+   class="org.apache.activemq.pool.PooledConnectionFactory" init-method="start" destroy-method="stop">
+   <property name="maxConnections" value="10" />
+   <property name="connectionFactory" ref="jmsConnectionFactory" />
+</bean>
+ 
+<bean id="jmsConfig" 
+   class="org.apache.camel.component.jms.JmsConfiguration">
+   <property name="connectionFactory" ref="pooledConnectionFactory"/>
+   <property name="concurrentConsumers" value="1"/>
+   <property name="maxConcurrentConsumers" value="30"/>
+   <property name="idleConsumerLimit" value="5"/>
+   <property name="maxMessagesPerTask" value="30"/> 
+</bean>
+ 
+<bean id="activemq1" 
+    class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="configuration" ref="jmsConfig"/>
+ 
+    <!-- if we are using transacted then enable CACHE_CONSUMER (if not using XA) to run faster
+         see more details at: http://camel.apache.org/jms
+    <property name="transacted" value="true"/>
+    <property name="cacheLevelName" value="CACHE_CONSUMER" />
+    -->
+</bean>
+  <camelContext id="telflow.fabric.cxfTest" trace="false" xmlns="http://camel.apache.org/schema/blueprint" xmlns:cim="http://schemas.dgit.biz/telflow/cim/v3">
+    <threadPool id="testThreadPool" poolSize="10" threadName="Test Threads"/>  
+    <route id="syncTestCxfBug">
+      <from uri="activemq1:com.telflow.fabric.cache/test"/>
+      <log message="Starting Mock Test" logName="cxf-test" loggingLevel="INFO"/>
+        <split>
+          <xpath>/*/SystemRequest</xpath>
+          <threads executorServiceRef="testThreadPool">
+            
+            <doTry>
+             <setBody>
+                <constant>{&quot;test&quot;:&quot;sample&quot;}</constant>     
+             </setBody>        
+             <to uri="cxf://http://0.0.0.1/test/type/1234567?dataFormat=RAW&amp;bus=#test"/>
+             <doCatch>
+               <exception>java.lang.Throwable</exception>
+               <handled>
+                 <constant>true</constant>
+               </handled>
+             </doCatch>
+            </doTry>
+            
+          </threads>
+        </split>
+      <log message="End of Mock Test" logName="cxf-test" loggingLevel="INFO"/>
+      <inOnly uri="activemq1:com.telflow.fabric.cache/test"/>
+
+    </route>
+  </camelContext>
+  
+</blueprint>

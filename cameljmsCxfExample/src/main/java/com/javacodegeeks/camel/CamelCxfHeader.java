@@ -10,13 +10,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.javacodegeeks.ws.product_service.types.ProductRequest;
 import com.javacodegeeks.ws.product_service.types.ProductResponse;
 
-public class CamelCxfExample {
+public class CamelCxfHeader {
 	private static ProducerTemplate template;
 
 	public static void main(String[] args) throws Exception {
 		System.setProperty("port1", "9000");
 		ApplicationContext appContext = new ClassPathXmlApplicationContext(
-				"applicationContext.xml");
+				"cxfheaderContext.xml");
 		CamelContext camelContext = SpringCamelContext.springCamelContext(
 				appContext, false);
 		try {
