@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+    xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+    xmlns:enc="http://karaf.apache.org/xmlns/jasypt/v1.0.0"
+    xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.0.0.xsd
+       http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0 http://aries.apache.org/schemas/blueprint-ext/blueprint-ext.xsd
+       http://karaf.apache.org/xmlns/jasypt/v1.0.0 http://karaf.apache.org/xmlns/jasypt/v1.0.0
+       "
+    default-activation="lazy">
+
+<cm:property-placeholder persistent-id="org.jboss.poc.camelblob.producer">
+    <cm:default-properties>
+      <cm:property name="file.consumer.path" value="data/producerstore"/>
+
+      <cm:property name="jms.broker.url" value="tcp://localhost:61617"/>
+      <cm:property name="jms.broker.username" value="admin"/>
+      <cm:property name="jms.broker.password" value="admin"/>
+
+      <cm:property name="jms.broker.blobTransferPolicy.uploadUrl" value="file:///tmp/store"/>
+
+      <!--
+      <cm:property name="jms.broker.blobTransferPolicy.uploadUrl" value="ftp://josh.reagan:password@192.168.56.101//"/>
+      -->
+      <cm:property name="jms.producer.queueName" value="org.jboss.poc.camelblob"/>
+    </cm:default-properties>
+  </cm:property-placeholder>
+ 
+
+  <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+    <property name="brokerURL" value="${jms.broker.url}?jms.blobTransferPolicy.uploadUrl=${jms.broker.blobTransferPolicy.uploadUrl}"/>
+    <property name="userName" value="${jms.broker.username}"/>
+    <property name="password" value="${jms.broker.password}"/>
+  </bean>
+ 
+  <bean id="blobMessageConverter" class="org.jboss.poc.camelblob.BlobMessageConverter"/>
+
+
+ 
+  <camelContext id="camel-blob-producer" trace="false" xmlns="http://camel.apache.org/schema/blueprint">
+
+    <route id="fileConsumerRoute">
+      <from uri="file://{{file.consumer.path}}?moveFailed=.error"/>
+      <log message="Consumed a file: ${headers[CamelFileName]}"/>
+      <convertBodyTo type="java.io.InputStream"/>
+      <to uri="direct:handleMessage"/>
+    </route>
+
+    <route id="messageHandlerRoute">
+      <from uri="direct:handleMessage"/>
+      <log message="Sending blob message..."/>
+      <!--
+      <to uri="jms:queue:{{jms.producer.queueName}}?disableReplyTo=true&amp;messageConverter=#blobMessageConverter"/>
+        -->
+      <to uri="amq:queue:{{jms.producer.queueName}}?disableReplyTo=true&amp;messageConverter=#blobMessageConverter"/>
+    </route>
+
+  </camelContext>
+
+</blueprint>
