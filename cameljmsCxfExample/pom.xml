@@ -5,11 +5,11 @@
 	<artifactId>cameljmsCxfExample</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 <properties>
-<!-- 
+ 
 <jboss.fuse.bom.version>6.2.1.redhat-117</jboss.fuse.bom.version>
- -->
+<!-- 
 <jboss.fuse.bom.version>6.1.1.redhat-454</jboss.fuse.bom.version>
-
+ -->
  </properties>
    <dependencyManagement>
     <dependencies>
@@ -63,7 +63,11 @@
 			<artifactId>cxf-rt-transports-http-jetty</artifactId>
 			
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+			
+		</dependency>		
    <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>

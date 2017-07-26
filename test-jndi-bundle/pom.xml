@@ -4,11 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.mycompany</groupId>
-  <artifactId>camel-blueprint</artifactId>
   <packaging>bundle</packaging>
   <version>1.0.0-SNAPSHOT</version>
 
-  <name>Camel Blueprint Route</name>
+  <name>JNDI Activemq Demo</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -177,4 +176,5 @@
     </plugins>
   </build>
 
+  <artifactId>jndi-activemq</artifactId>
 </project>

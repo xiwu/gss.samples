@@ -35,15 +35,21 @@
 		<property name="packages" value="${sObjectDTOPackages}"></property>
 	</bean>
 
-	<!--
-        <to uri="salesforce:getSObjectWithId?sObjectName=Account&amp;sObjectIdName=JBoss_Fuse_Integration_External_ID__c&amp;sObjectIdValue=33333"/>                                                                                   
-         --><camelContext xmlns="http://camel.apache.org/schema/spring">
-  <route id="sfRoute">
-    <from uri="timer://foo?repeatCount=1"/>
-    <to uri="salesforce:getSObjectWithId?apiVersion=27.0&amp;sObjectName=Account&amp;sObjectIdName=JBoss_Fuse_Integration_External_ID__c&amp;sObjectIdValue=33333"/>
-    <convertBodyTo type="java.lang.String"/>
-    <log message="Query result back from Salesforce: ${body}"/>
-  </route>
+	<camelContext xmlns="http://camel.apache.org/schema/spring">
+    <route id="sfRoute">
+        <from uri="timer://foo?repeatCount=1"/>
+        <!-- 
+        <to uri="salesforce:query?apiVersion=27.0&amp;sObjectName=Account&amp;sObjectClass=org.apache.camel.salesforce.dto.Account&amp;sObjectQuery=SELECT Id FROM Account"/>
+  -->
+                <to uri="salesforce:queryAll?sObjectName=Account&amp;sObjectClass=org.apache.camel.salesforce.dto.Account&amp;sObjectQuery=SELECT Id FROM Account"/>
+        <!--
+        <to uri="salesforce:getSObjectWithId?sObjectName=Account&amp;sObjectIdName=JBoss_Fuse_Integration_External_ID__c&amp;sObjectIdValue=33333&amp;IsDeleted=false"/>                                                                                   
+         --> 
+         <!--                 from("direct:queryXml")
+                    .to("salesforce:query?format=XML&sObjectQuery=SELECT name from Line_Item__c&sObjectClass=" + QueryRecordsLine_Item__c.class.getName()); -->
+        <convertBodyTo type="java.lang.String"/>
+        <log message="Query result back from Salesforce: ${body}"/>
+    </route>
 </camelContext>
 
 </beans>

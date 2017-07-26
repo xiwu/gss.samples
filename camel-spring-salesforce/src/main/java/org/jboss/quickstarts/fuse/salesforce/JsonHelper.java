@@ -37,12 +37,13 @@ public final class JsonHelper {
     }
 	
     public static Account readFile(String contents) throws IOException {
-        return (Account) MAPPER.readValue(contents, Account.class);
-//        Account account = new Account();
-//        account.setFax(null);
-//        account.setId("0012800000mm2eoAAA");
-//        account.setName("testcode");
-//        return account;
+    	
+    //    return (Account) MAPPER.readValue(contents, Account.class);
+        Account account = new Account();
+        account.setFax(null);
+        account.setId("0012800000mm2eoAAA");
+        account.setName("testcode");
+        return account;
         
     }
 

@@ -4,11 +4,14 @@
  */
 package org.apache.camel.salesforce.dto;
 
+//
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
+
 import org.apache.camel.component.salesforce.api.PicklistEnumConverter;
 import org.apache.camel.component.salesforce.api.dto.AbstractSObjectBase;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 /**
  * Salesforce DTO for SObject Account
@@ -281,11 +284,14 @@ public class Account extends AbstractSObjectBase {
     private String Fax;
 
     @JsonProperty("Fax")
+
+    @JsonSerialize(include = JsonSerialize.Inclusion.ALWAYS)
     public String getFax() {
         return this.Fax;
     }
 
     @JsonProperty("Fax")
+    @JsonSerialize(include = JsonSerialize.Inclusion.ALWAYS)   
     public void setFax(String Fax) {
         this.Fax = Fax;
     }
