@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+  
+  <reference id="helloWorld"
+        interface="org.fusesource.example.service.HelloWorldSvc"/>
+  
+  <bean id="client"
+        class="org.fusesource.example.client.Client"
+        init-method="init">
+    <property name="helloWorldSvc" ref="helloWorld"/>
+  </bean>
+  
+ <reference  xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0" id="esignatureAMQService" interface="org.apache.camel.component.jms.JmsConfiguration"  ext:proxy-method="classes"/>
+
+    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="configuration" ref="esignatureAMQService"/>
+    </bean>
+    
+<camelContext  xmlns="http://camel.apache.org/schema/blueprint">
+  <route>
+    <from uri="timer:foo?period=5000"/>
+    <setBody>
+    <simple>${body}Message at ${date:now:yyyy-MM-dd HH:mm:ss}</simple>    
+    </setBody>
+    <wireTap uri="activemq:queue:foo"/>
+    <log message="$$$The message contains ${body}"/>
+    <to uri="mock:result"/>
+  </route>
+</camelContext>
+    
+</blueprint>
