@@ -1,0 +1,43 @@
+
+A-MQ and JMX 
+
+
+如何使用query的功能：
+
+1. 1
+activemq:query --objname type=Broker,brokerName=*,destinationType=Topic,destinationName=durable_test,endpoint=Consumer,clientId=*,consumerId=* --view SubcriptionName,PendingQueueSize
+
+SubcriptionName = durable_test_2
+PendingQueueSize = 5
+
+SubcriptionName = durable_test_1
+PendingQueueSize = 10
+
+
+1.2
+./activemq-admin query -QQueue=Consumer.A.VirtualTopic.TEST101 --view ConsumerCount,ProducerCount
+
+
+2. 使用*通配符
+If you want to print out all the JMX attributes for each subscription registered on the topic "durable_test" you could use the following
+
+Raw
+activemq:query --objname type=Broker,brokerName=*,destinationType=Topic,destinationName=durable_test,endpoint=Consumer,clientId=*,consumerId=*
+
+3. 调用操作operation
+
+您可以运行如下命令来删除不需要的queue，请把相应的名字替换即可。
+./activemq-admin query --objname type=Broker,brokerName=localhost --invoke removeQueue,"Consumer.A.VirtualTopic.TEST10"
+
+请注意检查该Queue没有consumer，也没有producer。否则删除可能会有问题。
+
+
+
+[ref]
+
+https://access.redhat.com/solutions/2253661 [A-MQ. JMX query] how to query JMX metrics for a subscriptions to a topic, from the A-MQ karaf console
+
+https://access.redhat.com/solutions/2085763 [A-MQ,Karaf,JMX] how to invoke jmx operation on queue mbean from the A-MQ karaf console
+
+
+
