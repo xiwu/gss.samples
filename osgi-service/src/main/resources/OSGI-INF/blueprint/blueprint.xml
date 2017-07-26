@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+  
+  <bean id="hello" class="org.fusesource.example.service.impl.HelloWorldSvcImpl"/>
+  
+  <service ref="hello" interface="org.fusesource.example.service.HelloWorldSvc"/>
+
+
+<bean id="jmsConnectionFactory" 
+   class="org.apache.activemq.ActiveMQConnectionFactory">
+   <property name="brokerURL" value="discovery:(fabric:default)" />
+   <property name="userName" value="admin"/>
+   <property name="password" value="admin"/>
+   
+</bean>
+ 
+<bean id="pooledConnectionFactory" 
+   class="org.apache.activemq.pool.PooledConnectionFactory" init-method="start" destroy-method="stop">
+   <property name="maxConnections" value="10" />
+   <property name="connectionFactory" ref="jmsConnectionFactory" />
+</bean>
+ 
+<bean id="jmsConfig" 
+   class="org.apache.camel.component.jms.JmsConfiguration">
+   <property name="connectionFactory" ref="pooledConnectionFactory"/>
+   <property name="concurrentConsumers" value="1"/>
+   <property name="maxConcurrentConsumers" value="30"/>
+   <property name="idleConsumerLimit" value="5"/>
+   <property name="maxMessagesPerTask" value="30"/> 
+</bean>
+
+<service id="esignatureAMQService" ref="jmsConfig" interface="org.apache.camel.component.jms.JmsConfiguration"/>
+
+
+
+
+</blueprint>
