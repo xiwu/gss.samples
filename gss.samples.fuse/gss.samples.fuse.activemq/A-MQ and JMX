@@ -39,5 +39,5 @@ https://access.redhat.com/solutions/2253661 [A-MQ. JMX query] how to query JMX m
 
 https://access.redhat.com/solutions/2085763 [A-MQ,Karaf,JMX] how to invoke jmx operation on queue mbean from the A-MQ karaf console
 
-
+https://access.redhat.com/solutions/525713 Can I access ActiveMQ MBean information programmatically?
 
