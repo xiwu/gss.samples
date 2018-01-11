@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+ 
+ <bean id="jmsConnectionFactory" 
+   class="org.apache.activemq.ActiveMQConnectionFactory">
+ 
+   <property name="brokerURL" value="tcp://localhost:61616"/>
+   <property name="userName" value="admin"/>
+   <property name="password" value="admin"/>
+   
+</bean>
+ 
+<bean id="pooledConnectionFactory" 
+   class="org.apache.activemq.pool.PooledConnectionFactory" init-method="start" destroy-method="stop">
+   <property name="maxConnections" value="10" />
+   <property name="connectionFactory" ref="jmsConnectionFactory" />
+</bean>
+ 
+<bean id="jmsConfig" 
+   class="org.apache.camel.component.jms.JmsConfiguration">
+   <property name="connectionFactory" ref="pooledConnectionFactory"/>
+   <property name="concurrentConsumers" value="1"/>
+   <property name="maxConcurrentConsumers" value="30"/>
+   <property name="idleConsumerLimit" value="5"/>
+   <property name="maxMessagesPerTask" value="30"/> 
+</bean>
+<bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="acknowledgementModeName" value="CLIENT_ACKNOWLEDGE" />
+		<property name="configuration" ref="jmsConfig"/>
+		<property name="cacheLevelName" value="CACHE_CONNECTION" />
+</bean>  
+
+<camelContext  xmlns="http://camel.apache.org/schema/blueprint">
+
+
+ <route id="Core-Utils-Bundles-EmailHandler" startupOrder="3">
+    <from uri="activemq:queue:ESB.EMAIL.HANDLER" id="wmqEmailRequestQueue"/>
+    
+    <log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Entering Main route: ${routeId}" loggingLevel="DEBUG"/>
+    <log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Processing Email Request message:\n${body}"/>
+  <!--      
+    <bean ref="globalXmlUtils" method="removeXmlnsDeclaration(${body})"/>    
+    -->
+    <!-- Put Original Message in the Headers as a String after cleaning up namespace -->
+	<setHeader headerName="UD_OriginalMessage"><simple>${body}</simple></setHeader>
+    
+    <setHeader headerName="from">
+      <xpath resultType="java.lang.String">EmailRequest/From/text()</xpath>
+    </setHeader>
+    
+    <setHeader headerName="to">
+      <xpath resultType="java.lang.String">EmailRequest/To/text()</xpath>
+    </setHeader>
+    
+    <setHeader headerName="cc">
+      <xpath resultType="java.lang.String">EmailRequest/CC/text()</xpath>
+    </setHeader>
+     	 	
+    <setHeader headerName="subject">
+      <xpath resultType="java.lang.String">EmailRequest/Subject/text()</xpath>
+    </setHeader>
+    
+    
+    <setHeader headerName="contentType">
+    	<!-- constant>text/html; charset=utf-8</constant-->
+    	<!-- xpath resultType="java.lang.String">EmailRequest/ContentType/text()</xpath>
+    	<simple>${header.contentType}; charset=utf-8</simple-->
+      	<xpath resultType="java.lang.String">concat(EmailRequest/ContentType/text(),"; charset=utf-8")</xpath>
+    </setHeader>
+    
+    
+    <setBody>
+      <xpath resultType="java.lang.String">EmailRequest/Body</xpath>
+    </setBody>
+    <to uri="direct:Smtp-Send"/>
+  		
+  	<to uri="log:EmailHandler?showAll=true&amp;multiline=true&amp;level=INFO"/>
+  	
+  	<log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Processing Email Request COMPLETE:\n${body}" loggingLevel="INFO"/>  
+    <log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Exiting Main route: ${routeId}" loggingLevel="DEBUG"/>
+  
+  </route>
+
+ <route id="Smtp-Send" startupOrder="2">
+    		
+    <from uri="direct:Smtp-Send"/>
+ 	
+	<onException>
+   		<!-- Local retry of smtp send is exhausted, maybe it's a temporary connection error only -->
+   		<!-- 
+   		Got FailedToCreateRouteException/ClassNotFoundException for javax.mail.MessagingException when deploying bundle during runtime. 
+   		The issue was resolved after adding javax.mail package to import packages in pom.xml. Along with it, also had to include other required imports.
+   		The JUnit test cases did not fail, as camel-mail bundle imports required packages it seems. 
+   		-->
+   		<exception>javax.mail.MessagingException</exception>
+   		<onWhen>
+   			<simple>${exchangeProperty.CamelExceptionCaught} != null and 
+   				${exchangeProperty.CamelExceptionCaught.getMessage()} not contains 'Exception reading response'</simple>
+   		</onWhen>
+   		
+   		<!-- The bundle restart hangs if redeliveryPolicy is defined as a bean -->
+   		<redeliveryPolicy maximumRedeliveries="5" redeliveryDelay="500" maximumRedeliveryDelay="8000" useExponentialBackOff="true" backOffMultiplier="2" logRetryAttempted="true" retryAttemptedLogLevel="WARN"/>
+   		<handled><constant>true</constant></handled>
+   		<!--<log logName="Core-Utils-Bundles-EmailHandler" message="****** CAMEL EXCEPTION CAUGHT 1 ${exchangeProperty.CamelExceptionCaught.getMessage()}" loggingLevel="ERROR"/>   		
+   		<log logName="Core-Utils-Bundles-EmailHandler" message="****** CAMEL EXCEPTION CAUGHT 2  ${exchangeProperty.CamelExceptionCaught.getCause().getMessage()}" loggingLevel="ERROR"/> -->
+   		
+   		
+   		<log logName="Core-Utils-Bundles-EmailHandler" message="Send to smtp host failed. Message was retried."/>   		
+   		<to uri="log:EmailHandler?showAll=true&amp;multiline=true&amp;level=ERROR"/>   		
+   		<log logName="Core-Utils-Bundles-EmailHandler" message="***** Failed to connect to smtp\n${body}.. sending message to Exception Browser" loggingLevel="ERROR" />
+
+<!--		
+		<to uri="direct:ExceptionHandling"/>		
+-->   
+	</onException>
+   	
+   	<onException>
+   		<exception>java.lang.IllegalArgumentException</exception>   		   		   		
+   		<handled><constant>true</constant></handled>
+   		<log logName="Core-Utils-Bundles-EmailHandler" message="Send to smtp host failed. Caught IllegalArgumentException......"/>   		
+   		<to uri="log:EmailHandler?showAll=true&amp;multiline=true&amp;level=ERROR"/>   		
+   		<log logName="Core-Utils-Bundles-EmailHandler" message=">>>>> Failed to connect to smtp\n${body}.. sending message to Exception Browser" loggingLevel="ERROR" />		
+		<to uri="direct:ExceptionHandling"/>		
+   	</onException>
+   	   	   	
+   	   	   	
+   	<log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Entering route: ${routeId}" loggingLevel="INFO"/>
+   	
+   	
+	<!--  ESB-477 - starts -->
+	<removeHeaders pattern="JMS\w+"/>
+	<!--  ESB-477 - ends --> 
+   	   	   	
+    <to uri="smtp://smtp.sina.com:465?connectionTimeout=20000" id="smtpSendEndPoint"/>
+    <log logName="Core-Utils-Bundles-EmailHandler" message="\n*****Exiting route: ${routeId}" loggingLevel="INFO"/>    
+  
+  </route>
+</camelContext>
+</blueprint>
