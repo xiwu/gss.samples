@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    
+    
+      <bean id="jmsActivemqSslConnectionFactory" class="org.apache.activemq.artemis.jms.client.ActiveMQJMSConnectionFactory">
+    <constructor-arg index="0" value="tcp://localhost:5500?sslEnabled=true&amp;trustStorePath=/home/wuxiaohui/apps/amq-broker-7.0.3/examples/features/standard/ssl-enabled-dual-authentication/target/server0/etc/client-side-truststore.jks&amp;trustStorePassword=secureexample&amp;keyStorePath=/home/wuxiaohui/apps/amq-broker-7.0.3/examples/features/standard/ssl-enabled-dual-authentication/target/server0/etc/client-side-keystore.jks&amp;keyStorePassword=secureexample"/>
+    </bean>
+
+  <bean id="jms" class="org.apache.camel.component.jms.JmsComponent">
+    <!-- specify connection factory on JMS component -->
+    <property name="connectionFactory" ref="activemqCacheConnectionFactory"/>
+  </bean>
+  
+    <bean id="activemqCacheConnectionFactory"
+        class="org.springframework.jms.connection.CachingConnectionFactory" primary="true">
+        <property name="targetConnectionFactory" ref="jmsActivemqSslConnectionFactory" />
+        <property name="reconnectOnException" value="true" />
+        <property name="sessionCacheSize" value="50" />
+    </bean>
+  <camelContext id="myCamel" xmlns="http://camel.apache.org/schema/spring">
+
+    <route>
+      <from id="route-timer" uri="timer:foo?period=2000"/>
+      <transform id="route-transform">
+          <method ref="myTransformer"/>
+      </transform>
+      <log message="Sending ${body}to Artemis"/>
+      <to uri="jms:queue:exampleQueue"/>
+      <log message="Finish sending file to Artemis"/>
+    </route>
+
+  </camelContext>
+</beans>
