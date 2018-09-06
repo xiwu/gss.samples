@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <!-- Define a traditional camel context here -->
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <threadPool id="myPool" keepAliveTime="60" maxPoolSize="50" poolSize="50" threadName="Cool"/>
+        <!-- define REST API -->
+        <restConfiguration bindingMode="auto" component="jetty"
+            contextPath="/fuse" host="0.0.0.0" port="8787"/>
+        <rest id="eai-rest" path="/eai-test">
+            <post consumes="application/json; charset=zh_CN"
+                id="rest-post" produces="application/json; charset=zh_CN">
+                <toD id="direct to eai-gw-rest" uri="direct:a"/>
+            </post>
+        </rest>
+        <route id="_inbound_rest1a_dest" streamCache="true">
+            <from id="_from2" uri="direct:a"/>
+            <log id="_log1" message="===direct:a===== thread: ${threadName}"/>
+            <bean beanType="org.mycompany.HelloBean" id="_bean1" method="hello"/>
+            <multicast executorServiceRef="myPool" id="_multicast1"
+                parallelProcessing="true" streaming="true">
+                <to id="_to1" uri="direct:aa"/>
+                <to id="_to2" uri="direct:ab"/>
+            </multicast>
+            <log id="_log1e" message="===direct:a finish ===== thread: ${threadName}"/>
+        </route>
+        <route id="_route1">
+            <from id="_from1" uri="direct:aa"/>
+            <log id="_logaa" message="===direct:aa===== thread: ${threadName}"/>
+            <bean beanType="org.mycompany.HelloBean" id="_bean2" method="hello"/>
+        </route>
+        <route id="_route2">
+            <from id="_from3" uri="direct:ab"/>
+            <log id="_logab" message="===direct:ab===== thread: ${threadName}"/>
+            <bean beanType="org.mycompany.HelloBean" id="_bean3" method="hello"/>
+        </route>
+    </camelContext>
+</beans>
