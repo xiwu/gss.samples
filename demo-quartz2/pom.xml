@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sg.demo</groupId>
+    <artifactId>quartz2-issue</artifactId>
+    <name>SG :: DEMO :: QUARTZ</name>
+    <version>0.0.2</version>
+    <packaging>bundle</packaging>          
+
+    <properties>
+        <camel-version>2.17.0.redhat-630310</camel-version>
+        <spring-version>3.2.18.RELEASE_1</spring-version>
+        <slf4j-version>1.7.5</slf4j-version>
+        <log4j-version>1.2.17</log4j-version>
+        <fabric8.version>1.2.0.redhat-630310</fabric8.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!-- Curator framework -->
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric-zookeeper</artifactId>
+            <version>1.2.0.redhat-630310</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.fabric8</groupId>
+            <artifactId>fabric-zookeeper-spring</artifactId>
+            <version>1.2.0.redhat-630310</version>
+        </dependency>
+
+        <!-- Camel -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-quartz2</artifactId>
+            <version>${camel-version}</version>
+        </dependency>
+
+        <!-- Spring -->
+        <dependency>
+            <groupId>org.springframework.osgi</groupId>
+            <artifactId>spring-osgi-core</artifactId>
+            <version>1.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j-version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <!-- ==================================================
+       Remote repository definition.
+       Required to automate maven deploy and deploy-file.
+       fabric.url needs to be passed in a JVM parameter:
+       -Dfabric.url
+    ================================================== -->
+    <distributionManagement>
+        <repository>
+            <id>fabric</id>
+            <url>${fabric.url}</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.3.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+                        <Bundle-Version>${project.version}</Bundle-Version>
+                        <Import-Package>
+                            io.fabric8.zookeeper.spring,
+                            io.fabric8.zookeeper,
+                            org.springframework.beans.factory.*;version="[3.2,4)",
+                            *
+                        </Import-Package>
+                        <Private-Package>org.apache.camel.jaas</Private-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+       </plugins>
+    </build>
+
+
+    <!-- Add FUSE repositories for snaphots and releases -->
+    <repositories>
+        <repository>
+            <id>release.fusesource.org</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>ea.fusesource.org</id>
+            <name>FuseSource Community Early Access Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>snapshot.fusesource.org</id>
+            <name>FuseSource Snapshot Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>release.fusesource.org</id>
+            <name>FuseSource Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>ea.fusesource.org</id>
+            <name>FuseSource Community Early Access Release Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/groups/ea</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+        <pluginRepository>
+            <id>snapshot.fusesource.org</id>
+            <name>FuseSource Snapshot Repository</name>
+            <url>http://repo.fusesource.com/nexus/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

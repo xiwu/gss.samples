@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xmlns:cxfcore="http://cxf.apache.org/core"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xsi:schemaLocation="
+         http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+         http://www.springframework.org/schema/osgi-compendium  http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium-1.2.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+         http://camel.apache.org/schema/cxf            http://camel.apache.org/schema/cxf/camel-cxf.xsd
+         http://cxf.apache.org/core                    http://cxf.apache.org/schemas/core.xsd
+	">
+
+    <!-- ============================================================== -->
+    <!-- PROPERTIES                                                     -->
+    <!-- Sourcing properties, decrypting                                -->
+    <!-- Setting placeholders                                           -->
+    <!--                                                                -->
+
+    <!--  Sourcing  Properties                  -->
+    <osgix:cm-properties id="fabric-profile" persistent-id="sol.pocpark">
+        <prop key="db.driver">oracle.jdbc.OracleDriver</prop>
+        <prop key="default.message">Hello world</prop>
+    </osgix:cm-properties>
+    <!--                                                                -->
+    <!-- PROPERTIES SECTION END                                         -->
+    <!-- ============================================================== -->
+
+
+    <!-- ====================================== -->
+    <!-- Solution Specific Spring beans         -->
+    <osgi:reference id="curator" interface="org.apache.curator.framework.CuratorFramework"/>
+
+    <!-- ====================================== -->
+    <!-- Camel Context                          -->
+    <camelContext id="sol-poc-parking" xmlns="http://camel.apache.org/schema/spring">
+
+        <route id="quartz scheduler">
+            <from uri="master:poc_parking_main:quartz2://pocparking?cron=0/5+0/1+*+1/1+*+?+*"/>
+            <setBody>
+                <simple>TEST BODY</simple>
+            </setBody>
+            <log message="MESSAGE" loggingLevel="INFO" id="POC-PARKING"/>
+
+        </route>
+
+
+    </camelContext>
+
+</beans>
