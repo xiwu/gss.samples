@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<cricketers>
+    <cricketer type="righty">
+        <name>MS Dhoni</name>
+        <role>Captain</role>
+        <position>Wicket-Keeper</position>
+    </cricketer>
+    <cricketer type="lefty">
+        <name>Shikhar Dhawan</name>
+        <role>Batsman</role>
+        <position>Point</position>
+    </cricketer>
+    <cricketer type="righty">
+        <name>Virat Kohli</name>
+        <role>Batsman</role>
+        <position>cover</position>
+    </cricketer>
+    <cricketer type="righty">
+        <name>Shami</name>
+        <role>Bowler</role>
+        <position>SquareLeg</position>
+    </cricketer>
+    <cricketer type="lefty">
+        <name>Zaheer Khan</name>
+        <role>Bowler</role>
+        <position>FineLeg</position>
+    </cricketer>
+</cricketers>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <route id="simple-route">
+            <from id="route-timer" uri="file:///Users/wuxiaohui/workspace/t02969171/src/main/resources/input/"/>
+            <log id="route-log2" message=">>> ${body}"/>
+            <setHeader headerName="parameter2" id="_setHeader1">
+                <xpath resultType="java.lang.String">
+    /jobs/link/@href
+  </xpath>
+            </setHeader>
+            <log id="route-log" message=">>> ${body}"/>
+            <log id="_log1" message="parameter2 $simple{in.header.parameter2}"/>
+            <log id="_log1" message="ftping $xpath:/jobs/link/@href"/>
+            <loop doWhile="true" id="_loop1">
+                <xpath resultType="java.lang.String">/jobs/link/@href != ""</xpath>
+                <!-- 
+                        <toD uri="language:xpath:/jobs/link/@href"/>
+            -->
+                <log id="route-log" message="!!!!!!!>>> ${body}"/>
+            </loop>
+            <log id="route-log" message=">???????>> ${body}"/>
+        </route>
+    </camelContext>
+</beans>
+<!-- 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <route id="simple-route">
+            <from id="route-timer" uri="file:///Users/wuxiaohui/workspace/t02969171/src/main/resources/spring/input.xml"/>
+            <setHeader headerName="parameter2" id="_setHeader1">
+                <xpath resultType="java.lang.String">
+    /jobs/link/href/@value
+  </xpath>
+            </setHeader>
+             <log id="route-log" message=">>> ${body}"/>
+            <log id="_log1" message="ftping $simple{in.header.parameter2}"/>
+        </route>
+    </camelContext>
+</beans>
+-->
