@@ -1,0 +1,11 @@
+
+                                                                                                                                                                                                  
+     __       ___      ____    ____      ___       __  ___  __       ___      
+      |  |     /   \     \   \  /   /     /   \     |  |/  / |  |     /   \     
+      |  |    /  ^  \     \   \/   /     /  ^  \    |  '  /  |  |    /  ^  \    
+.--.  |  |   /  /_\  \     \      /     /  /_\  \   |    <   |  |   /  /_\  \   
+|  `--'  |  /  _____  \     \    /     /  _____  \  |  .  \  |  |  /  _____  \  
+ \______/  /__/     \__\     \__/     /__/     \__\ |__|\__\ |__| /__/     \__\                                                                                                                                                     
+                      
+${AnsiColor.BRIGHT_GREEN}Spring Boot Application uploading files to AWS S3 Bucket using Apache Camel${AnsiStyle.NORMAL}                                                                                                                                                                            
+                                                                                                                                                                                                  
