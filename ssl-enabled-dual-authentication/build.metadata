@@ -1,0 +1,12 @@
+# Created by buildmetadata-maven-plugin 1.7.0 ( SHA: 6f444cae ) 
+build.artifactId=ssl-enabled-dual-authentication
+build.groupId=org.apache.activemq.examples.broker
+build.java.compiler=HotSpot 64-Bit Tiered Compilers
+build.java.runtime.name=Java(TM) SE Runtime Environment
+build.java.runtime.version=1.8.0_191-b12
+build.java.vendor=Oracle Corporation
+build.java.vm=Java HotSpot(TM) 64-Bit Server VM
+build.maven.execution.cmdline=verify
+build.maven.version=3.6.1
+build.version=2.16.0.redhat-00012
+build.version.full=2.16.0.redhat-00012
