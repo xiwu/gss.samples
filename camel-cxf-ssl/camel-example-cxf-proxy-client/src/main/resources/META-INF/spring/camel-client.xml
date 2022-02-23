@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!-- START SNIPPET: e1 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:cxfcore="http://cxf.apache.org/core"
+    xmlns:http="http://cxf.apache.org/transports/http/configuration"
+    xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+    xmlns:sec="http://cxf.apache.org/configuration/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd             http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-2.23.2.xsd             http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd             http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd             http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd             http://cxf.apache.org/transports/http-jetty/configuration http://cxf.apache.org/schemas/configuration/http-jetty.xsd             http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+    <!-- spring property placeholder, ignore resource not found as the file resource is for unit testing -->
+    <context:property-placeholder ignore-resource-not-found="true" location="classpath:incident.properties,file:target/custom.properties"/>
+    <!-- Use a bean to start and stop the real web service (is not Camel specific) -->
+    <!-- In a real use-case the real web service would be probably located on another server
+       but we simulate this in the same JVM -->
+    <!-- this is the CXF web service we use as the front end -->
+    <http:conduit name="{http://reportincident.example.camel.apache.org}ReportIncidentEndpoint.http-conduit">
+        <http:tlsClientParameters disableCNCheck="true" secureSocketProtocol="TLS">
+            <sec:keyManagers keyPassword="ckpass">
+                <sec:keyStore password="cspass"
+                    resource="certs/clientKeystore.jks" type="JKS"/>
+            </sec:keyManagers>
+            <sec:trustManagers>
+                <sec:keyStore password="cspass"
+                    resource="certs/clientKeystore.jks" type="JKS"/>
+            </sec:trustManagers>
+            <sec:cipherSuitesFilter>
+                <sec:include>.*_WITH_AES_.*</sec:include>
+                <sec:include>.*_EXPORT_.*</sec:include>
+                <sec:include>.*_EXPORT1024_.*</sec:include>
+                <sec:include>.*_WITH_DES_.*</sec:include>
+                <sec:include>.*_WITH_NULL_.*</sec:include>
+                <sec:exclude>.*_DH_anon_.*</sec:exclude>
+            </sec:cipherSuitesFilter>
+            <!-- 
+      <sec:cipherSuitesFilter>
+        <sec:include>.*_WITH_3DES_.*</sec:include>
+        <sec:include>.*_WITH_DES_.*</sec:include>
+        <sec:exclude>.*_WITH_NULL_.*</sec:exclude>
+        <sec:exclude>.*_DH_anon_.*</sec:exclude>
+      </sec:cipherSuitesFilter>
+       -->
+        </http:tlsClientParameters>
+    </http:conduit>
+    <cxf:cxfEndpoint
+        address="https://localhost:${proxy.port}/camel-example-cxf-proxy/webservices/incident"
+        endpointName="s:ReportIncidentEndpoint" id="reportIncident"
+        serviceName="s:ReportIncidentEndpointService"
+        wsdlURL="etc/report_incident.wsdl" xmlns:s="http://reportincident.example.camel.apache.org"/>
+    <!-- this is the Camel route which proxies the real web service and forwards SOAP requests to it -->
+    <camelContext id="camelContext-b63131ec-e732-444b-a10d-e6706a3dd0eb" xmlns="http://camel.apache.org/schema/spring">
+        <!-- property which contains port number -->
+        <propertyPlaceholder id="properties" location="classpath:incident.properties,file:target/custom.properties"/>
+        <route id="_route2">
+            <from id="file" uri="file:inputdata"/>
+            <log id="route-log" message=">>> ${body}"/>
+            <to id="_to1" uri="cxf:bean:reportIncident?dataFormat=MESSAGE"/>
+            <log id="route-log" message=">>> ${body}"/>
+        </route>
+    </camelContext>
+</beans>
+<!-- END SNIPPET: e1 -->

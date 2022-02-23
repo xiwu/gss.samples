@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+                  xmlns:rep="http://reportincident.example.camel.apache.org">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <rep:inputReportIncident>
+         <incidentId></incidentId>
+         <incidentDate>2011-11-18</incidentDate>
+         <givenName>Bob</givenName>
+         <familyName>Smith</familyName>
+         <summary>Bla bla</summary>
+         <details>More bla</details>
+         <email>your@email.org</email>
+         <phone>12345678</phone>
+      </rep:inputReportIncident>
+   </soapenv:Body>
+</soapenv:Envelope>
