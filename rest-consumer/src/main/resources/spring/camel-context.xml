@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration bindingMode="auto" component="jetty"
+            contextPath="/fuse" host="0.0.0.0" port="8787"/>
+        <rest id="eai-rest" path="/eai-test">
+            <post consumes="application/json; charset=zh_CN"
+                id="rest-post" produces="application/json; charset=zh_CN">
+                <toD id="direct to eai-gw-rest" uri="direct:a"/>
+            </post>
+        </rest>
+        <route id="_inbound_rest1a_dest" streamCache="true">
+            <from id="_from2" uri="direct:a"/>
+            <log id="_log1" message="===direct:a===== thread: ${threadName}"/>
+            <bean beanType="org.mycompany.HelloBean" id="_bean1" method="hello"/>
+            <log id="_log1e" message="===direct:a finish ===== thread: ${threadName}"/>
+        </route>
+        <!--           
+        <route id="simple-route">
+            <from id="route-timer" uri="timer://foo?period=1000"/>
+            <setBody id="route-setBody">
+                <simple>Hello World from camel-context.xml</simple>
+            </setBody>
+            <log id="route-log" message=">>> ${body}"/>
+        </route>
+-->
+    </camelContext>
+</beans>

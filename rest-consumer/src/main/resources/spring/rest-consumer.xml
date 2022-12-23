@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-3.0.xsd        http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camelContext-ceff7d23-1af2-4a96-b6ee-16701698ce00" xmlns="http://camel.apache.org/schema/spring">
+        <!-- below use undertow
+        <restConfiguration bindingMode="auto" host="0.0.0.0" producerComponent="http4" component="undertow" port="18080"/> 
+        -->
+        <restConfiguration bindingMode="auto" component="jetty"
+            host="0.0.0.0" port="18080"/>
+        <rest id="rest-0617e6a0-b802-4a69-b99f-a39055d25bcc" path="/say">
+            <get id="get-19037d52-4cb1-4514-9d01-4304565acfd2" uri="/hello">
+                <to uri="direct:hello"/>
+            </get>
+            <get consumes="application/json"
+                id="get-237267c7-76dc-49cc-928c-1cebee4e5051" uri="/bye">
+                <to uri="direct:bye"/>
+            </get>
+            <post id="post-256e1d12-11f0-4738-886c-26730129dd1f" uri="/bye">
+                <to uri="mock:update"/>
+            </post>
+        </rest>
+        <!-- 
+        <route id="_inbound_rest1a_dest" streamCache="true">
+            <from id="_from2" uri="timer:foo?period=5000"/>
+            <to id="_to1" uri="rest:get:/hello"/>
+            <log id="_log1" message="===body: ${body}"/>
+        </route>
+  -->
+        <route id="_route1">
+            <from id="_from1" uri="direct:hello"/>
+            <setBody id="_setBody1">
+                <constant>Hello World</constant>
+            </setBody>
+            <log id="_log1" message="===body: ${body}"/>
+        </route>
+        <route id="_route2">
+            <from id="_from3" uri="direct:bye"/>
+            <transform id="_transform2">
+                <constant>Bye World</constant>
+            </transform>
+            <log id="_log2" message="===body: ${body}"/>
+            <bean beanType="org.mycompany.HelloBean" id="_bean2" method="bye"/>
+        </route>
+    </camelContext>
+</beans>

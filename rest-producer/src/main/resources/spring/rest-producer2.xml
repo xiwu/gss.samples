@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       https://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean
+        class="org.apache.camel.component.http4.BasicAuthenticationHttpClientConfigurer" id="clientConfigurer">
+        <constructor-arg name="user" value="admin"/>
+        <constructor-arg name="pwd" value="admin"/>
+        <constructor-arg name="domain" value="localhost"/>
+        <constructor-arg name="host" value="localhost"/>
+    </bean>
+    <bean class="org.apache.camel.http.common.HttpConfiguration" id="httpConfiguration">
+        <property name="authMethod" value="Basic"/>
+        <property name="authUsername" value="Basic"/>
+        <property name="authPassword" value="Basic"/>
+    </bean>
+    <bean class="org.apache.camel.component.http4.HttpComponent" id="http-foo">
+        <property name="httpClientConfigurer" ref="clientConfigurer"/>
+    </bean>
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration bindingMode="auto" host="localhost:18080/say" producerComponent="http4"/>
+        <route id="_inbound_rest1a_dest" streamCache="true">
+            <from id="_from2" uri="timer:foo?period=50000"/>
+            <setHeader headerName="Origin" id="_setHeader1">
+                <constant>http://localhost</constant>
+            </setHeader>
+            <!--
+             <setHeader headerName="Authorization">
+               <constant>Basic YWRtaW46YWRtaW4=</constant>
+            </setHeader>  
+            -->
+            <!--
+            <to id="_to1" uri="rest:get:/console/jolokia/read/org.apache.activemq.artemis:broker=!%220.0.0.0!%22/QueueCount"/>
+           -->
+            <!--
+            <to id="_to1" uri="rest:get:/console/jolokia/read/org.apache.activemq.artemis:broker=0.0.0.0/QueueCount"/>
+           -->
+            <!-- worked -->
+            <to id="_to1" uri="rest:get:/hello?authMethod=Basic&amp;authUsername=admin&amp;authPassword=admin"/>
+            <log id="_log1" message="===body: ${body}"/>
+        </route>
+        <!--           
+        <route id="simple-route">
+            <from id="route-timer" uri="timer://foo?period=1000"/>
+            <setBody id="route-setBody">
+                <simple>Hello World from camel-context.xml</simple>
+            </setBody>
+            <log id="route-log" message=">>> ${body}"/>
+        </route>
+-->
+    </camelContext>
+</beans>

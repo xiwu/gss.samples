@@ -1,0 +1,21 @@
+httpClientConfigurer
+
+ GET /console/jolokia/read/org.apache.activemq.artemis:broker%5C=%5C!%220.0.0.0%5C!%22/QueueCount HTTP/1.1
+
+
+ GET /console/jolokia/read/org.apache.activemq.artemis:broker=!%220.0.0.0!%22/QueueCount HTTP/1.1
+
+
+ GET /console/jolokia/read/org.apache.activemq.artemis:broker=!%220.0.0.0!%22/QueueCount HTTP/1.1[\r][\n]
+
+
+
+ 12:05:13.474 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> GET /console/jolokia/read/org.apache.activemq.artemis:broker=!%220.0.0.0!%22/QueueCount HTTP/1.1
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> Authorization: Basic YWRtaW46YWRtaW4=
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> breadcrumbId: ID-wuxiaohuinoMacBook-Pro-1643256311344-0-1
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> firedTime: Thu Jan 27 12:05:13 CST 2022
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> Origin: http://localhost
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> Host: localhost:8161
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.5.13.redhat-00002 (Java/1.8.0_291)
+12:05:13.475 [Camel (MyCamel) thread #2 - timer://foo] DEBUG org.apache.http.headers - http-outgoing-0 >> Accept-Encoding: gzip,deflate
