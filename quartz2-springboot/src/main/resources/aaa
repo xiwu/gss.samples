@@ -1,0 +1,9 @@
+DataTransfer_XXPPO_OFFICE | 0 0 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_OFFICE
+DataTransfer_XXPPO_USER | 0 1 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_USER
+DataTransfer_XXPPO_MENU | 0 2 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_MENU
+DataTransfer_XXPPO_LSS_USER | 0 3 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_LSS_USER
+DataTransfer_XXPPO_GROUP | 0 4 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_GROUP
+DataTransfer_XXPPO_GROUP_MENU | 0 5 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_GROUP_MENU
+DataTransfer_XXPPO_SYSTEM | 0 6 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_SYSTEM
+DataTransfer_XXPPO_USER_GROUP | 0 7 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXPPO_USER_GROUP
+DataTransfer_XXEGO_AIRPORT_CITY | 0 8 1 * * ? | /PIP/db_trans_script/runtransfer.sh | XXEGO_AIRPORT_CITY
