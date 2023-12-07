@@ -1,4 +1,4 @@
- /*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements. See the NOTICE file distributed with
  * this work for additional information regarding copyright ownership.
@@ -14,49 +14,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+package com.redhat.gss.support.jms.core.simple.queue;
 
 import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.Queue;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.naming.InitialContext;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.command.ActiveMQTextMessage;
+import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 
 /**
  * An example showing how messages are moved to dead letter destination when they are unsuccessfully delivered multiple times
  */
-public class VirtualTopicDeadLetterExample {
+public class DeadLetterExample2 {
 
-   private static final Boolean TRANSACTED = true;
    public static void main(final String[] args) throws Exception {
       Connection connection = null;
 
       try {
-         // Step 1. Create an initial context to perform the JNDI lookup.
-//         initialContext = new InitialContext();
 
-         // Step 2. Perfom a lookup on the queue
-//         Queue queue = (Queue) initialContext.lookup("queue/exampleQueue");
 
-         // Step 3. Perform a lookup on the Connection Factory
-//         ConnectionFactory cf = (ConnectionFactory) initialContext.lookup("ConnectionFactory");
 
-     	ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory("admin","admin","failover:(tcp://localhost:61616,tcp://localhost:61618)");
-
+         String connUri = "tcp://localhost:61616";
+         ConnectionFactory factory = new ActiveMQConnectionFactory(connUri);
+         ActiveMQConnectionFactory amqcf = (ActiveMQConnectionFactory) factory;
+         amqcf.getServerLocator().setConnectionTTL(1200000);
+         connection = factory.createConnection();  
          
-         // Step 4.Create a JMS Connection
-         connection = cf.createConnection();
-
+         
          // Step 5. Create a * transacted* JMS Session
-         Session session = connection.createSession(TRANSACTED, Session.SESSION_TRANSACTED);
+         Session session = connection.createSession(true, 0);
 
-
-     	Queue queue = session.createQueue("exampleQueue"); 
-     	
+         Queue queue = session.createQueue("exampleQueue");
          // Step 6. Create a JMS Message Producer
          MessageProducer producer = session.createProducer(queue);
 
@@ -98,32 +91,18 @@ public class VirtualTopicDeadLetterExample {
          // Step 16. The 4th time, call will timeout after 5000ms and messageReceived will be null
          messageReceived = (TextMessage) messageConsumer.receive(5000);
          System.out.println("4th delivery from " + queue.getQueueName() + ": " + messageReceived);
-         session.rollback();
 
-         messageReceived = (TextMessage) messageConsumer.receive(5000);
-         System.out.println("5th delivery from " + queue.getQueueName() + ": " + messageReceived);
-         session.rollback();
-         
-         messageReceived = (TextMessage) messageConsumer.receive(5000);
-         System.out.println("6th delivery from " + queue.getQueueName() + ": " + messageReceived);
-         session.rollback();
- 
-         
-         messageReceived = (TextMessage) messageConsumer.receive(5000);
-         System.out.println("7th delivery from " + queue.getQueueName() + ": " + messageReceived);
-         session.rollback();
-         
          // We will now consume the message from the dead letter queue
 
          // Step 17. Perform a lookup on the dead letter queue
-         Queue deadLetterQueue = session.createQueue("DLQ.exampleQueue"); 
+         Queue deadLetterQueue = session.createQueue("deadLetterQueue");
 
          // Step 18. Create a JMS Message Consumer for the dead letter queue
          MessageConsumer deadLetterConsumer = session.createConsumer(deadLetterQueue);
 
          // Step 19. Receive the message from the dead letter queue
          messageReceived = (TextMessage) deadLetterConsumer.receive(5000);
-         
+
          // Step 20. The message sent to the queue was moved to the dead letter queue after 3 unsuccessful deliveries
          System.out.println("Received message from " + deadLetterQueue.getQueueName() +
                                ": " +
@@ -138,18 +117,17 @@ public class VirtualTopicDeadLetterExample {
          // Step 21. the messageReceived's destination is now the dead letter queue.
          System.out.println("Destination of the message: " + ((Queue) messageReceived.getJMSDestination()).getQueueName());
 
-         // Step 22. the *origin* destination 
-         System.out.println("*Origin destination* of the message: " + ((ActiveMQTextMessage)messageReceived).getOriginalDestination());
+         // Step 22. the *origin* destination is stored in the _AMQ_ORIG_ADDRESS property
+         System.out.println("*Origin destination* of the message: " + messageReceived.getStringProperty("_AMQ_ORIG_ADDRESS"));
 
          // Step 23. This time, we commit the session, the delivery from the dead letter queue is successful!
          session.commit();
       } finally {
          // Step 24. Be sure to close our JMS resources!
+
          if (connection != null) {
             connection.close();
          }
       }
    }
 }
-
-

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <!-- <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" -->
+    <!--     xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" -->
+    <!--     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0      https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd            http://camel.apache.org/schema/blueprint      http://camel.apache.org/schema/blueprint/camel-blueprint.xsd"> -->
+    <cm:property-placeholder id="MyPropertyPlaceholder"
+        persistent-id="com.mycompany.camel.blueprint.property" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="myMsg" value="myMsg"/>
+            <cm:property name="period" value="period"/>
+            <cm:property name="broker.url" value="vm://0"/>
+            <cm:property name="broker.username" value="admin"/>
+            <cm:property name="broker.password" value="admin"/>
+            <cm:property name="queue.archiv.sugar.xml" value="archivqueue"/>
+            <cm:property name="queue.archiv.json.recipientslist" value="resultqueuearchiv"/>
+            <cm:property name="queue.archiv.json" value="archivjsonqueue"/>
+            <cm:property name="queue.testqueue" value="testqueue"/>
+            <cm:property name="queue.testqueue.json.recipientslist" value="resultqueuetestqueue"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    <camelContext id="MyDozerExample" xmlns="http://camel.apache.org/schema/blueprint">
+        <endpoint id="_sourceArchiv" uri="jms:queue:{{queue.archiv.sugar.xml}}"/>
+        <endpoint id="_sourceTestqueue" uri="jms:queue:{{queue.testqueue}}"/>
+        <onException useOriginalMessage="true">
+            <exception>java.lang.Throwable</exception>
+            <handled>
+                <constant>false</constant>
+            </handled>
+            <log id="logEx" logName="test" loggingLevel="ERROR" message="Exception Throwable"/>
+        </onException>
+        <route id="testArtemis">
+            <from id="fromTestArtemis" uri="direct:testArtemis"/>
+            <log id="logTestArtemis" logName="test" loggingLevel="INFO" message="testArtemis vor Queue:\n#####\n${headers}\n${body} "/>
+            <!--to id="ToQueueTestArtemis" uri="jms:queue:anyName"/-->
+            <to id="ToQueueTestArtemis" uri="jms:queue:testqueue"/>
+            <log id="logTestArtemisNachQueue" logName="test"
+                loggingLevel="INFO" message="testArtemis nach Queue:\n#####${header.originalqueue}\n${headers}\n${body} "/>
+        </route>
+        <route id="mapArchiv">
+            <from id="FromQueueArchiv" uri="ref:_sourceArchiv"/>
+            <log id="logArchiv" logName="test" loggingLevel="INFO" message="test mapArchiv Queue:\n#####\n${headers}\n${body} "/>
+            <recipientList id="toQueueArchiv" ignoreInvalidEndpoints="false">
+                <simple>jms:queue:{{queue.archiv.json.recipientslist}}</simple>
+            </recipientList>
+        </route>
+        <route id="testQueueAbholung">
+            <from id="fromTestQueue" uri="ref:_sourceTestqueue"/>
+            <log id="logTestQueue" logName="test" loggingLevel="INFO" message="test testQueueAbholung Queue:\n#####\n${headers}\n${body} "/>
+            <recipientList id="toTestQueueRecipientslist" ignoreInvalidEndpoints="false">
+                <simple>jms:queue:{{queue.testqueue.json.recipientslist}}</simple>
+            </recipientList>
+        </route>
+    </camelContext>
+    <bean
+        class="org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory" id="activemq-connection-factory">
+        <argument value="${broker.url}"/>
+        <argument value="${broker.username}"/>
+        <argument value="${broker.password}"/>
+    </bean>
+    <bean class="org.apache.camel.component.jms.JmsConfiguration" id="activemqConfig">
+        <property name="connectionFactory" ref="activemq-connection-factory"/>
+        <property name="preserveMessageQos" value="true"/>
+    </bean>
+    <bean class="org.apache.camel.component.jms.JmsComponent" id="jms">
+        <property name="configuration" ref="activemqConfig"/>
+    </bean>
+</blueprint>

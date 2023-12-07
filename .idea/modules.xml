@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/amq/AMQPTest/AMQPTest.iml" filepath="$PROJECT_DIR$/amq/AMQPTest/AMQPTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/amq/amq.iml" filepath="$PROJECT_DIR$/amq/amq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/amq/jms-example-queue/jms-example-queue.iml" filepath="$PROJECT_DIR$/amq/jms-example-queue/jms-example-queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot-artemis-logging/springboot-artemis-logging.iml" filepath="$PROJECT_DIR$/springboot-artemis-logging/springboot-artemis-logging.iml" />
+    </modules>
+  </component>
+</project>

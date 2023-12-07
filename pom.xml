@@ -3,7 +3,7 @@
    <parent>
         <groupId>org.jboss.fuse.bom</groupId>
         <artifactId>jboss-fuse-parent</artifactId>
-        <version>6.2.0.redhat-133</version>
+        <version>6.3.0.redhat-516</version>
     </parent>
     
   <groupId>com.redhat</groupId>
