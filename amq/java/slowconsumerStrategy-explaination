@@ -1,0 +1,42 @@
+一个consumer连上来之后，它的LastMessageAck时间如何计算？
+return time of last received Ack message or Subscription create time if no Acks.
+
+返回consumer端收到的最后一个消息的ACK时间。如果从来没有收到过消息，那么就是该consumer的创建时间，具体可以参见：
+Subscription.getTimeOfLastMessageAck()方法。
+对于如下的policy来说，
+
+<policyEntry queue=">">
+        <slowConsumerStrategy>
+             <abortSlowAckConsumerStrategy checkPeriod="30000" maxTimeSinceLastAck="20000" abortConnection="true" maxSlowCount="2"/>
+        </slowConsumerStrategy> 
+</policyEntry>
+
+
+一个consumer连上来，
+
+1. 如果队列里面有消息，如果没有在预定时间[20, 50]内ACK消息，就被标记被slowconsumer一次。
+再经过时间 30s，判断时间上LastMessageAck 与现在的时间差 > 20s, 则被标记为第二次，断掉连接。
+
+2. 如果队列里面没有消息，那consumer处于空闲状态，默认是不处理的。
+   如果队列里面现在又有新消息了，那slowConsumerStrategy开始工作。时间从新消息的派发时间开始算。（可以简单理解为Broker端收到新消息的时间）
+
+
+
+
+
+
+    /**
+     * Returns the time since the last Ack message was received by this subscription.
+     *
+     * If there has never been an ack this value should be set to the creation time of the
+     * subscription.
+     *
+     * @return time of last received Ack message or Subscription create time if no Acks.
+     */
+    long getTimeOfLastMessageAck();
+
+
+
+
+         * number of times a subscription can be deemed slow before triggering abort
+     * effect depends on dispatch rate as slow determination is done on dispatch
