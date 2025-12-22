@@ -1,7 +1,6 @@
 package org.apache.activemq.artemis.jms.example;
 
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
-import org.apache.commons.lang3.StringUtils;
 import org.messaginghub.pooled.jms.JmsPoolConnectionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
