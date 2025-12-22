@@ -1,0 +1,1051 @@
+2025-12-16 16:15:19.790 [main] INFO  hello.Application - Starting Application using Java 17.0.11 with PID 33943 (/Users/wuxiaohui/cases/04312973/gs-messaging-jms/complete/target/classes started by wuxiaohui in /Users/wuxiaohui/cases/04312973/gs-messaging-jms/complete)
+2025-12-16 16:15:19.791 [main] INFO  hello.Application - No active profile set, falling back to 1 default profile: "default"
+2025-12-16 16:15:20.096 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-16 16:15:20.099 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-16 16:15:20.100 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-16 16:15:20.100 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-12-16 16:15:20.123 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-16 16:15:20.124 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 319 ms
+2025-12-16 16:15:20.167 [main] DEBUG org.apache.activemq.artemis.utils.UUIDGenerator - using hardware address ffffff8e:ffffff99:79:3d:35:7
+2025-12-16 16:15:20.215 [main] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Starting server ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.219 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221000: Primary message broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=/var/folders/cy/c92yv50n5r73dsf7j69_f0tw0000gn/T/artemis-data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/largemessages,pagingDirectory=data/paging)
+2025-12-16 16:15:20.221 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-64
+2025-12-16 16:15:20.223 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-64 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-64 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-16 16:15:20.224 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-64 not found!
+2025-12-16 16:15:20.224 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-32
+2025-12-16 16:15:20.225 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-32 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-32 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-16 16:15:20.225 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-32 not found!
+2025-12-16 16:15:20.225 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Couldn't locate LibAIO Wrapper
+2025-12-16 16:15:20.225 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221045: libaio is not available, switching the configuration into NIO
+2025-12-16 16:15:20.238 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 4831838208
+2025-12-16 16:15:20.244 [main] DEBUG o.a.a.a.core.server.cluster.ClusterController - Starting Cluster Controller 1304939804 for server ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.247 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2025-12-16 16:15:20.261 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: null
+2025-12-16 16:15:20.261 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@28e0e464
+2025-12-16 16:15:20.261 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.265 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering broker as org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@28e0e464
+2025-12-16 16:15:20.265 [main] INFO  org.apache.activemq.artemis.core.server - AMQ224092: Despite disabled persistence, page files will be persisted.
+2025-12-16 16:15:20.268 [main] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Page Transactions during rebuildCounters:
+2025-12-16 16:15:20.269 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Complete cleanupPageTransactions with no orphaned records found
+2025-12-16 16:15:20.269 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2025-12-16 16:15:20.270 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@6435fa1c
+2025-12-16 16:15:20.271 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.DLQ as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@6435fa1c
+2025-12-16 16:15:20.271 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ"
+2025-12-16 16:15:20.271 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2025-12-16 16:15:20.296 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=DLQ, queue=QueueImpl[name=DLQ, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@7e8279e5, filter=null, name=DLQ, clusterName=DLQ5cc8f919-da57-11f0-94b6-8e99793d3507] from server ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.297 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=5cd5070a-da57-11f0-94b6-8e99793d3507, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=DLQ, _AMQ_Distance=0, _AMQ_Address=DLQ, _AMQ_Binding_ID=1, _AMQ_ClusterName=DLQ5cc8f919-da57-11f0-94b6-8e99793d3507]] as the server is not initialized
+2025-12-16 16:15:20.300 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@6ad1701a
+2025-12-16 16:15:20.300 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.DLQ as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@6ad1701a
+2025-12-16 16:15:20.300 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ",subcomponent=queues,routing-type="anycast",queue="DLQ"
+2025-12-16 16:15:20.300 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2025-12-16 16:15:20.300 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7ecda95b
+2025-12-16 16:15:20.300 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7ecda95b
+2025-12-16 16:15:20.300 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue"
+2025-12-16 16:15:20.301 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2025-12-16 16:15:20.301 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=ExpiryQueue, queue=QueueImpl[name=ExpiryQueue, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@22da2fe6, filter=null, name=ExpiryQueue, clusterName=ExpiryQueue5cc8f919-da57-11f0-94b6-8e99793d3507] from server ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.301 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=5cd5ca5b-da57-11f0-94b6-8e99793d3507, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=ExpiryQueue, _AMQ_Distance=0, _AMQ_Address=ExpiryQueue, _AMQ_Binding_ID=4, _AMQ_ClusterName=ExpiryQueue5cc8f919-da57-11f0-94b6-8e99793d3507]] as the server is not initialized
+2025-12-16 16:15:20.301 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-16 16:15:20.301 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-16 16:15:20.301 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue",subcomponent=queues,routing-type="anycast",queue="ExpiryQueue"
+2025-12-16 16:15:20.301 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@35bfa1bb
+2025-12-16 16:15:20.301 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.activemq.notifications as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@35bfa1bb
+2025-12-16 16:15:20.302 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="activemq.notifications"
+2025-12-16 16:15:20.315 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@1416ff46
+2025-12-16 16:15:20.315 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering acceptor.5cc17f08-da57-11f0-94b6-8e99793d3507 as org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@1416ff46
+2025-12-16 16:15:20.317 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=null, type=ACCEPTOR_STARTED, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, id=0]] as the server is not initialized
+2025-12-16 16:15:20.317 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221007: Server is now active
+2025-12-16 16:15:20.317 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.33.0 [localhost, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507] 
+2025-12-16 16:15:20.327 [main] DEBUG o.s.j.a.JmsListenerAnnotationBeanPostProcessor - 1 @JmsListener methods processed on bean 'receiver': {public void hello.Receiver.receiveMessage(hello.Email)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="myFactory", concurrency="", destination="mailbox")]}
+2025-12-16 16:15:20.418 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-16 16:15:20.427 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-12-16 16:15:20.431 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying reconnection attempt 0/1
+2025-12-16 16:15:20.431 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying to connect with connectorFactory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMConnectorFactory@2baac4a7 and currentConnectorConfig: TransportConfiguration(name=5cd83b5c-da57-11f0-94b6-8e99793d3507, factory=org-apache-activemq-artemis-core-remoting-impl-invm-InVMConnectorFactory)?serverId=0
+2025-12-16 16:15:20.432 [main] DEBUG o.a.a.a.core.remoting.impl.invm.InVMConnector - Started InVM Connector
+2025-12-16 16:15:20.439 [main] INFO  org.apache.activemq.audit.resource - AMQ601767: CORE connection 5ce9ee9e-da57-11f0-94b6-8e99793d3507 for user unknown@invm:0 created
+2025-12-16 16:15:20.439 [main] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Adding connection 5ce9ee9e-da57-11f0-94b6-8e99793d3507, we now have 1
+2025-12-16 16:15:20.439 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Connected with the currentConnectorConfig=TransportConfiguration(name=5cd83b5c-da57-11f0-94b6-8e99793d3507, factory=org-apache-activemq-artemis-core-remoting-impl-invm-InVMConnectorFactory)?serverId=0
+2025-12-16 16:15:20.456 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Reconnection successful
+2025-12-16 16:15:20.457 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - ClientSessionFactoryImpl received backup update for primary/backup pair = TransportConfiguration(name=5cd83b5c-da57-11f0-94b6-8e99793d3507, factory=org-apache-activemq-artemis-core-remoting-impl-invm-InVMConnectorFactory)?serverId=0 / null  but it didn't belong to TransportConfiguration(name=5cd83b5c-da57-11f0-94b6-8e99793d3507, factory=org-apache-activemq-artemis-core-remoting-impl-invm-InVMConnectorFactory)?serverId=0
+2025-12-16 16:15:20.461 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601267: User anonymous@invm:0 is creating a core session on target resource ActiveMQServerImpl::name=localhost with parameters: [5cee0d51-da57-11f0-94b6-8e99793d3507, null, ****, 102400, RemotingConnectionImpl [ID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, clientID=null, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507, transportConnection=InVMConnection [serverID=0, id=5ce9ee9e-da57-11f0-94b6-8e99793d3507]], false, false, false, false, null, org.apache.activemq.artemis.core.protocol.core.impl.CoreSessionCallback@73a97bb3, true, {}]
+2025-12-16 16:15:20.467 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:15:20.467 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=8, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cee0d51-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920467, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1330104439
+2025-12-16 16:15:20.469 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=8, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cee0d51-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920467, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1330104439 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:15:20.475 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Established shared JMS Connection: org.apache.activemq.artemis.jms.client.ActiveMQConnection@45984654
+2025-12-16 16:15:20.476 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Established shared JMS Connection
+2025-12-16 16:15:20.476 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Resumed paused task: org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker@682e445e
+2025-12-16 16:15:20.476 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601267: User anonymous@invm:0 is creating a core session on target resource ActiveMQServerImpl::name=localhost with parameters: [5cf07e52-da57-11f0-94b6-8e99793d3507, null, ****, 102400, RemotingConnectionImpl [ID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, clientID=null, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507, transportConnection=InVMConnection [serverID=0, id=5ce9ee9e-da57-11f0-94b6-8e99793d3507]], false, false, false, false, null, org.apache.activemq.artemis.core.protocol.core.impl.CoreSessionCallback@15a1446f, true, {}]
+2025-12-16 16:15:20.477 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:15:20.477 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=10, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920477, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1018488841
+2025-12-16 16:15:20.477 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=10, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920477, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1018488841 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:15:20.480 [main] INFO  hello.Application - Started Application in 0.847 seconds (process running for 0.966)
+2025-12-16 16:15:20.481 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS Session for mode 0: ActiveMQSession->ClientSessionImpl [name=5cf07e52-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@45586a94
+2025-12-16 16:15:20.482 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601267: User anonymous@invm:0 is creating a core session on target resource ActiveMQServerImpl::name=localhost with parameters: [5cf141a3-da57-11f0-94b6-8e99793d3507, null, ****, 102400, RemotingConnectionImpl [ID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, clientID=null, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507, transportConnection=InVMConnection [serverID=0, id=5ce9ee9e-da57-11f0-94b6-8e99793d3507]], true, true, false, false, null, org.apache.activemq.artemis.core.protocol.core.impl.CoreSessionCallback@af6eefc, true, {}]
+2025-12-16 16:15:20.482 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:15:20.482 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=12, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf141a3-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920482, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@359350769
+2025-12-16 16:15:20.482 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=12, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=661, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf141a3-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CREATED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765872920482, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@359350769 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:15:20.482 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS Session for mode 1: ActiveMQSession->ClientSessionImpl [name=5cf141a3-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@4ef5dd23
+2025-12-16 16:15:20.482 [main] DEBUG org.springframework.jms.core.JmsTemplate - Executing callback on JMS Session: Cached JMS Session: ActiveMQSession->ClientSessionImpl [name=5cf141a3-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@4ef5dd23
+2025-12-16 16:15:20.486 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601262: User anonymous@invm:0 is creating address on target resource: 5cf141a3-da57-11f0-94b6-8e99793d3507 with parameters: [mailbox, [ANYCAST], true]
+2025-12-16 16:15:20.486 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@invm:0 is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1e8fef1c
+2025-12-16 16:15:20.486 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.mailbox as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1e8fef1c
+2025-12-16 16:15:20.486 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="mailbox"
+2025-12-16 16:15:20.490 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.resource - AMQ601065: User anonymous@invm:0 is creating a queue on target resource: ServerSessionImpl() with parameters: [QueueConfiguration [id=null, name=mailbox, address=mailbox, routingType=ANYCAST, filterString=null, durable=true, user=null, maxConsumers=-1, exclusive=null, groupRebalance=null, groupRebalancePauseDispatch=null, groupBuckets=null, groupFirstKey=null, lastValue=null, lastValueKey=null, nonDestructive=null, purgeOnNoConsumers=false, enabled=null, consumersBeforeDispatch=null, delayBeforeDispatch=null, consumerPriority=null, autoDelete=null, autoDeleteDelay=null, autoDeleteMessageCount=null, ringSize=null, configurationManaged=null, temporary=false, autoCreateAddress=null, internal=null, transient=null, autoCreated=true, fqqn=null]]
+2025-12-16 16:15:20.490 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.resource - AMQ601065: User anonymous@invm:0 is creating a queue on target resource: ServerSessionImpl() with parameters: [QueueConfiguration [id=null, name=mailbox, address=mailbox, routingType=ANYCAST, filterString=null, durable=true, user=null, maxConsumers=-1, exclusive=null, groupRebalance=null, groupRebalancePauseDispatch=null, groupBuckets=null, groupFirstKey=null, lastValue=null, lastValueKey=null, nonDestructive=null, purgeOnNoConsumers=false, enabled=null, consumersBeforeDispatch=null, delayBeforeDispatch=null, consumerPriority=null, autoDelete=null, autoDeleteDelay=null, autoDeleteMessageCount=null, ringSize=null, configurationManaged=null, temporary=false, autoCreateAddress=null, internal=null, transient=null, autoCreated=true, fqqn=null]]
+2025-12-16 16:15:20.490 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=mailbox, queue=QueueImpl[name=mailbox, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@4a8a7d6b, filter=null, name=mailbox, clusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507] from server ActiveMQServerImpl::name=localhost
+2025-12-16 16:15:20.490 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:15:20.490 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=16, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=554, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=mailbox, _AMQ_Distance=0, _AMQ_Address=mailbox, _AMQ_NotifType=BINDING_ADDED, _AMQ_Binding_ID=14, _AMQ_NotifTimestamp=1765872920490, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507]]@1320818956
+2025-12-16 16:15:20.490 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=16, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=554, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=mailbox, _AMQ_Distance=0, _AMQ_Address=mailbox, _AMQ_NotifType=BINDING_ADDED, _AMQ_Binding_ID=14, _AMQ_NotifTimestamp=1765872920490, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507]]@1320818956 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:15:20.491 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@invm:0 is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@16da7bba
+2025-12-16 16:15:20.491 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.mailbox as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@16da7bba
+2025-12-16 16:15:20.491 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="mailbox",subcomponent=queues,routing-type="anycast",queue="mailbox"
+2025-12-16 16:15:20.491 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.ServerSessionImpl - Queue mailbox created on address mailbox with filter=null temporary = false durable=true on session user=null, connection=RemotingConnectionImpl [ID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, clientID=null, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507, transportConnection=InVMConnection [serverID=0, id=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]
+2025-12-16 16:15:20.491 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG org.apache.activemq.artemis.utils.AutoCreateUtil - The queue mailbox was created automatically
+2025-12-16 16:15:20.491 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.base - AMQ601265: User anonymous@invm:0 is creating a core consumer on target resource ServerSessionImpl() with parameters: [0, mailbox, null, 0, false, true, null]
+2025-12-16 16:15:20.494 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.a.c.protocol.core.ServerSessionPacketHandler - Sending exception to client
+org.apache.activemq.artemis.api.core.ActiveMQQueueExistsException: AMQ229019: Queue mailbox already exists on address mailbox
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.createQueue(ActiveMQServerImpl.java:4098)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.createQueue(ActiveMQServerImpl.java:4072)
+	at org.apache.activemq.artemis.core.server.impl.ServerSessionImpl.createQueue(ServerSessionImpl.java:765)
+	at org.apache.activemq.artemis.core.protocol.core.ServerSessionPacketHandler.slowPacketHandler(ServerSessionPacketHandler.java:399)
+	at org.apache.activemq.artemis.core.protocol.core.ServerSessionPacketHandler.onMessagePacket(ServerSessionPacketHandler.java:319)
+	at org.apache.activemq.artemis.utils.actors.Actor.doTask(Actor.java:32)
+	at org.apache.activemq.artemis.utils.actors.ProcessorBase.executePendingTasks(ProcessorBase.java:68)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:57)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:32)
+	at org.apache.activemq.artemis.utils.actors.ProcessorBase.executePendingTasks(ProcessorBase.java:68)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.activemq.artemis.utils.ActiveMQThreadFactory$1.run(ActiveMQThreadFactory.java:118)
+2025-12-16 16:15:20.495 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - Requesting 32768 credits on address mailbox, needed = 32768, arriving = 0
+2025-12-16 16:15:20.495 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - Request 32768 credits on address mailbox
+2025-12-16 16:15:20.495 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - QueueImpl[name=mailbox, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@4a8a7d6b adding consumer ServerConsumerImpl [id=0, filter=null, binding=LocalQueueBinding [address=mailbox, queue=QueueImpl[name=mailbox, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@4a8a7d6b, filter=null, name=mailbox, clusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507], closed=false]
+2025-12-16 16:15:20.496 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS MessageProducer for destination [ActiveMQQueue[mailbox]]: ActiveMQMessageProducer->org.apache.activemq.artemis.core.client.impl.ClientProducerImpl@7fc7152e
+2025-12-16 16:15:20.496 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.ServerSessionImpl - Session with user=null, connection=RemotingConnectionImpl [ID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, clientID=null, nodeID=5cc8f919-da57-11f0-94b6-8e99793d3507, transportConnection=InVMConnection [serverID=0, id=5ce9ee9e-da57-11f0-94b6-8e99793d3507]] created a consumer on queue mailbox, filter = null
+2025-12-16 16:15:20.496 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:15:20.496 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=18, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=867, properties=TypedProperties[_AMQ_Distance=0, _AMQ_ConsumerCount=1, _AMQ_User=NULL-value, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Address=mailbox, _AMQ_RemoteAddress=invm:0, _AMQ_ConsumerName=0, _AMQ_NotifTimestamp=1765872920496, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507, _AMQ_ValidatedUser=NULL-value, _AMQ_RoutingName=mailbox, _AMQ_NotifType=CONSUMER_CREATED, _AMQ_CertSubjectDN=unavailable]]@813550973
+2025-12-16 16:15:20.496 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=18, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=867, properties=TypedProperties[_AMQ_Distance=0, _AMQ_ConsumerCount=1, _AMQ_User=NULL-value, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Address=mailbox, _AMQ_RemoteAddress=invm:0, _AMQ_ConsumerName=0, _AMQ_NotifTimestamp=1765872920496, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507, _AMQ_ValidatedUser=NULL-value, _AMQ_RoutingName=mailbox, _AMQ_NotifType=CONSUMER_CREATED, _AMQ_CertSubjectDN=unavailable]]@813550973 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:15:20.497 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.ServerConsumerImpl - ServerConsumerImpl [id=0, filter=null, binding=LocalQueueBinding [address=mailbox, queue=QueueImpl[name=mailbox, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@4a8a7d6b, filter=null, name=mailbox, clusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507], closed=false]::FlowControl::Received 1048576 credits, previous value = 0 currentValue = 1048576
+2025-12-16 16:15:20.507 [main] DEBUG org.springframework.jms.core.JmsTemplate - Sending created message: ActiveMQMessage[null]:PERSISTENT/ClientMessageImpl[messageID=0, durable=true, address=null,userID=null,properties=TypedProperties[_type=hello.Email]]
+2025-12-16 16:15:20.507 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - not asking for -1 credits on mailbox
+2025-12-16 16:15:20.507 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - AfterAcquire 337 credits on address mailbox, pendingCredits=32431
+2025-12-16 16:15:20.509 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute returned bindings with size = 1
+2025-12-16 16:15:20.509 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.ServerSessionImpl - Routing result for CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381 = OK
+2025-12-16 16:15:20.509 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.QueueMessageMetrics - QueuePendingMessageMetrics[queue=mailbox, name=pending] increment messageCount to 1: Reference[19]:RELIABLE:CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381
+2025-12-16 16:15:20.510 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.QueueMessageMetrics - QueuePendingMessageMetrics[queue=mailbox, name=delivering] increment messageCount to 1: Reference[19]:RELIABLE:CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381
+2025-12-16 16:15:20.509 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.message - AMQ601500: User anonymous@invm:0 sent a message CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381, context: RoutingContextImpl(Address=mailbox, routingType=ANYCAST, PreviousAddress=mailbox previousRoute:ANYCAST, reusable=true, version=-2147483645)
+..................................................
+***** durable queues mailbox:
+- queueID=14 address:mailbox name:mailbox filter:null
+***** non durable for mailbox:
+..................................................
+, transaction: null
+2025-12-16 16:15:20.510 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.QueueMessageMetrics - QueuePendingMessageMetrics[queue=mailbox, name=pending] decrement messageCount to 0: Reference[19]:RELIABLE:CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381
+2025-12-16 16:15:20.510 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.message - AMQ601501: User anonymous@invm:0 is consuming a message from mailbox: Reference[19]:RELIABLE:CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381
+2025-12-16 16:15:20.512 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Received message of type [class org.apache.activemq.artemis.jms.client.ActiveMQTextMessage] from consumer [ActiveMQMessageConsumer[org.apache.activemq.artemis.core.client.impl.ClientConsumerImpl@3b899159{consumerContext=ActiveMQConsumerContext{id=0}, queueName=mailbox}]] of session [Cached JMS Session: ActiveMQSession->ClientSessionImpl [name=5cf07e52-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@45586a94]
+2025-12-16 16:15:20.513 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.j.l.adapter.MessagingMessageListenerAdapter - Processing [LazyResolutionMessage [rawMessage=ActiveMQMessage[ID:5cf53946-da57-11f0-94b6-8e99793d3507]:PERSISTENT/ClientMessageImpl[messageID=19, durable=true, address=mailbox,userID=5cf53946-da57-11f0-94b6-8e99793d3507,properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]]]
+2025-12-16 16:15:20.520 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - client ack messageID = 19
+2025-12-16 16:15:20.522 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.message - AMQ601759: User anonymous@invm:0 added acknowledgement of a message from mailbox: CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381 to transaction: TransactionImpl [xid=null, txID=9, xid=null, state=ACTIVE, createTime=1765872920477(Tue Dec 16 16:15:20 CST 2025), timeoutSeconds=300, nr operations = 1]@51245d6c
+2025-12-16 16:15:20.522 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.server.impl.QueueMessageMetrics - QueuePendingMessageMetrics[queue=mailbox, name=delivering] decrement messageCount to 0: Reference[19]:RELIABLE:CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381
+2025-12-16 16:15:20.522 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] INFO  org.apache.activemq.audit.message - AMQ601502: User anonymous@invm:0 acknowledged message from mailbox: CoreMessage[messageID=19, durable=true, userID=5cf53946-da57-11f0-94b6-8e99793d3507, priority=4, timestamp=Tue Dec 16 16:15:20 CST 2025, expiration=0, durable=true, address=mailbox, size=337, properties=TypedProperties[__AMQ_CID=5cee0d50-da57-11f0-94b6-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]@276480381, transaction: TransactionImpl [xid=null, txID=9, xid=null, state=COMMITTED, createTime=1765872920477(Tue Dec 16 16:15:20 CST 2025), timeoutSeconds=300, nr operations = 0]@51245d6c
+2025-12-16 16:15:50.322 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:15:50.324 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:15:50.325 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:15:50.326 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:16:20.270 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:16:20.275 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:16:20.275 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:16:20.276 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 14 for queue = mailbox, value = 0, size = 0
+2025-12-16 16:16:20.324 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:16:20.324 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:16:20.324 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:16:20.324 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:16:50.325 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:16:50.326 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:16:50.326 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:16:50.326 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:17:20.271 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:17:20.274 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:17:20.274 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:17:20.274 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 14 for queue = mailbox, value = 0, size = 0
+2025-12-16 16:17:20.331 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:17:20.331 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:17:20.331 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:17:20.331 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:17:50.334 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:17:50.335 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:17:50.335 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:17:50.335 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:18:20.272 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:18:20.272 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:18:20.273 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:18:20.273 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 14 for queue = mailbox, value = 0, size = 0
+2025-12-16 16:18:20.338 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:18:20.339 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:18:20.339 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:18:20.339 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:18:50.340 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:18:50.341 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:18:50.341 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:18:50.341 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:19:20.272 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:19:20.273 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:19:20.274 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:19:20.274 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@748a654a)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 14 for queue = mailbox, value = 0, size = 0
+2025-12-16 16:19:20.342 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:19:20.342 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:19:20.342 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox
+2025-12-16 16:19:20.343 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on mailbox done
+2025-12-16 16:19:45.656 [SpringApplicationShutdownHook] DEBUG o.s.jms.connection.CachingConnectionFactory - Closing cached Session: ActiveMQSession->ClientSessionImpl [name=5cf141a3-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@4ef5dd23
+2025-12-16 16:19:45.657 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=5cf141a3-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@4ef5dd23
+2025-12-16 16:19:45.660 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:19:45.661 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=547, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf141a3-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185660, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@740584146
+2025-12-16 16:19:45.661 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=547, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf141a3-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185660, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@740584146 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:19:45.661 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=5cf141a3-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@4ef5dd23
+2025-12-16 16:19:45.664 [SpringApplicationShutdownHook] DEBUG o.s.jms.connection.CachingConnectionFactory - Closing shared JMS Connection: org.apache.activemq.artemis.jms.client.ActiveMQConnection@45984654
+2025-12-16 16:19:45.664 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=5cee0d51-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=(jms-session=,)]@27df5806
+2025-12-16 16:19:45.667 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:19:45.667 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=549, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cee0d51-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185667, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1624713931
+2025-12-16 16:19:45.667 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=549, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cee0d51-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185667, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@1624713931 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:19:45.667 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=5cee0d51-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=(jms-session=,)]@27df5806
+2025-12-16 16:19:45.667 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=5cf07e52-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@45586a94
+2025-12-16 16:19:45.668 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Removing consumer ServerConsumerImpl [id=0, filter=null, binding=LocalQueueBinding [address=mailbox, queue=QueueImpl[name=mailbox, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@4a8a7d6b, filter=null, name=mailbox, clusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507], closed=true]
+2025-12-16 16:19:45.669 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:19:45.669 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=551, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=796, properties=TypedProperties[_AMQ_RoutingName=mailbox, _AMQ_Distance=0, _AMQ_ConsumerCount=0, _AMQ_User=NULL-value, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Address=mailbox, _AMQ_RemoteAddress=invm:0, _AMQ_NotifType=CONSUMER_CLOSED, _AMQ_ConsumerName=0, _AMQ_FilterString=NULL-value, _AMQ_NotifTimestamp=1765873185669, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507]]@1492124795
+2025-12-16 16:19:45.670 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=551, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=796, properties=TypedProperties[_AMQ_RoutingName=mailbox, _AMQ_Distance=0, _AMQ_ConsumerCount=0, _AMQ_User=NULL-value, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Address=mailbox, _AMQ_RemoteAddress=invm:0, _AMQ_NotifType=CONSUMER_CLOSED, _AMQ_ConsumerName=0, _AMQ_FilterString=NULL-value, _AMQ_NotifTimestamp=1765873185669, _AMQ_ClusterName=mailbox5cc8f919-da57-11f0-94b6-8e99793d3507]]@1492124795 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:19:45.671 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:19:45.671 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=553, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185671, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@505890741
+2025-12-16 16:19:45.671 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@7d97e06c)] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=553, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=659, properties=TypedProperties[_AMQ_User=NULL-value, _AMQ_Distance=0, _AMQ_SessionName=5cf07e52-da57-11f0-94b6-8e99793d3507, _AMQ_Protocol_Name=CORE, _AMQ_Address=activemq.notifications, _AMQ_NotifType=SESSION_CLOSED, _AMQ_Client_ID=NULL-value, _AMQ_NotifTimestamp=1765873185671, _AMQ_ConnectionName=5ce9ee9e-da57-11f0-94b6-8e99793d3507]]@505890741 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:19:45.671 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=5cf07e52-da57-11f0-94b6-8e99793d3507, username=null, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@45586a94
+2025-12-16 16:19:45.672 [SpringApplicationShutdownHook] INFO  org.apache.activemq.audit.resource - AMQ601768: CORE connection 5ce9ee9e-da57-11f0-94b6-8e99793d3507 for user anonymous@invm:0 destroyed
+2025-12-16 16:19:45.672 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - RemotingServiceImpl::removing succeeded connection ID 5ce9ee9e-da57-11f0-94b6-8e99793d3507, we now have 0 connections
+2025-12-16 16:19:45.673 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Session was already closed, giving up now, this=ClientSessionImpl [name=5cf07e52-da57-11f0-94b6-8e99793d3507, username=null, closed=true, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=()]@45586a94
+2025-12-16 16:19:45.673 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Session was already closed, giving up now, this=ClientSessionImpl [name=5cee0d51-da57-11f0-94b6-8e99793d3507, username=null, closed=true, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@207dd1b7, metaData=(jms-session=,)]@27df5806
+2025-12-16 16:19:45.673 [Thread-1 (ActiveMQ-client-global-threads)] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Failure captured on connectionID=5ce9ee9e-da57-11f0-94b6-8e99793d3507, performing failover or reconnection now
+org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219006: Channel disconnected
+	at org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl.connectionDestroyed(ClientSessionFactoryImpl.java:418)
+	at org.apache.activemq.artemis.core.remoting.impl.invm.InVMConnector$Listener$1.run(InVMConnector.java:280)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:57)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:32)
+	at org.apache.activemq.artemis.utils.actors.ProcessorBase.executePendingTasks(ProcessorBase.java:68)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.activemq.artemis.utils.ActiveMQThreadFactory$1.run(ActiveMQThreadFactory.java:118)
+2025-12-16 16:19:45.674 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Shutting down JMS listener container
+2025-12-16 16:19:45.674 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Waiting for shutdown of message listener invokers
+2025-12-16 16:19:45.675 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Lowered scheduled invoker count: 0
+2025-12-16 16:19:45.675 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Stopping server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:45.675 [SpringApplicationShutdownHook] DEBUG o.a.a.a.core.server.cluster.ClusterController - Stopping Cluster Controller 1304939804 for server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:45.675 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:19:45.675 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:19:45.675 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 14 for queue = mailbox, value = 0, size = 0
+2025-12-16 16:19:45.678 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Pausing acceptor org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptor@346afb7f
+2025-12-16 16:19:45.678 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Sending disconnect on client connections
+2025-12-16 16:19:45.678 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:19:45.678 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=554, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1765873185678, id=0]]@607148495
+2025-12-16 16:19:45.678 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=554, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:19:45 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1765873185678, id=0]]@607148495 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:19:45.679 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Mirror controller is being installed
+2025-12-16 16:19:45.680 [SpringApplicationShutdownHook] INFO  org.apache.activemq.artemis.core.server - AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.33.0 [5cc8f919-da57-11f0-94b6-8e99793d3507] stopped, uptime 4 minutes
+2025-12-16 16:19:58.094 [main] INFO  hello.Application - Starting Application using Java 17.0.11 with PID 34925 (/Users/wuxiaohui/cases/04312973/gs-messaging-jms/complete/target/classes started by wuxiaohui in /Users/wuxiaohui/cases/04312973/gs-messaging-jms/complete)
+2025-12-16 16:19:58.095 [main] INFO  hello.Application - No active profile set, falling back to 1 default profile: "default"
+2025-12-16 16:19:58.396 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-16 16:19:58.400 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-16 16:19:58.401 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-16 16:19:58.401 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-12-16 16:19:58.427 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-16 16:19:58.427 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 317 ms
+2025-12-16 16:19:58.474 [main] DEBUG org.apache.activemq.artemis.utils.UUIDGenerator - using hardware address ffffff8e:ffffff99:79:3d:35:7
+2025-12-16 16:19:58.527 [main] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Starting server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:58.531 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221000: Primary message broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=/var/folders/cy/c92yv50n5r73dsf7j69_f0tw0000gn/T/artemis-data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/largemessages,pagingDirectory=data/paging)
+2025-12-16 16:19:58.533 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-64
+2025-12-16 16:19:58.534 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-64 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-64 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-16 16:19:58.535 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-64 not found!
+2025-12-16 16:19:58.535 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-32
+2025-12-16 16:19:58.539 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-32 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-32 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-16 16:19:58.540 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-32 not found!
+2025-12-16 16:19:58.540 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Couldn't locate LibAIO Wrapper
+2025-12-16 16:19:58.540 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221045: libaio is not available, switching the configuration into NIO
+2025-12-16 16:19:58.553 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 4831838208
+2025-12-16 16:19:58.560 [main] DEBUG o.a.a.a.core.server.cluster.ClusterController - Starting Cluster Controller 1954761469 for server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:58.563 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2025-12-16 16:19:58.577 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: null
+2025-12-16 16:19:58.577 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@7bdf61ad
+2025-12-16 16:19:58.577 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:58.581 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering broker as org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@7bdf61ad
+2025-12-16 16:19:58.581 [main] INFO  org.apache.activemq.artemis.core.server - AMQ224092: Despite disabled persistence, page files will be persisted.
+2025-12-16 16:19:58.584 [main] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Page Transactions during rebuildCounters:
+2025-12-16 16:19:58.585 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Complete cleanupPageTransactions with no orphaned records found
+2025-12-16 16:19:58.585 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2025-12-16 16:19:58.586 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1450131a
+2025-12-16 16:19:58.587 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.DLQ as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1450131a
+2025-12-16 16:19:58.587 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ"
+2025-12-16 16:19:58.587 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2025-12-16 16:19:58.613 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=DLQ, queue=QueueImpl[name=DLQ, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@3e546734, filter=null, name=DLQ, clusterName=DLQ02ac03d0-da58-11f0-abd7-8e99793d3507] from server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:58.614 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=02b8d511-da58-11f0-abd7-8e99793d3507, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=DLQ, _AMQ_Distance=0, _AMQ_Address=DLQ, _AMQ_Binding_ID=1, _AMQ_ClusterName=DLQ02ac03d0-da58-11f0-abd7-8e99793d3507]] as the server is not initialized
+2025-12-16 16:19:58.617 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-16 16:19:58.617 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.DLQ as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-16 16:19:58.617 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ",subcomponent=queues,routing-type="anycast",queue="DLQ"
+2025-12-16 16:19:58.617 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2025-12-16 16:19:58.617 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@713a35c5
+2025-12-16 16:19:58.617 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@713a35c5
+2025-12-16 16:19:58.617 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue"
+2025-12-16 16:19:58.618 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=ExpiryQueue, queue=QueueImpl[name=ExpiryQueue, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@62aeddc8, filter=null, name=ExpiryQueue, clusterName=ExpiryQueue02ac03d0-da58-11f0-abd7-8e99793d3507] from server ActiveMQServerImpl::name=localhost
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=02b99862-da58-11f0-abd7-8e99793d3507, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=ExpiryQueue, _AMQ_Distance=0, _AMQ_Address=ExpiryQueue, _AMQ_Binding_ID=4, _AMQ_ClusterName=ExpiryQueue02ac03d0-da58-11f0-abd7-8e99793d3507]] as the server is not initialized
+2025-12-16 16:19:58.618 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@11787b64
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@11787b64
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue",subcomponent=queues,routing-type="anycast",queue="ExpiryQueue"
+2025-12-16 16:19:58.618 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7d0100ea
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.activemq.notifications as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7d0100ea
+2025-12-16 16:19:58.618 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="activemq.notifications"
+2025-12-16 16:19:58.632 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@6f1c3f18
+2025-12-16 16:19:58.632 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering acceptor.02a3c66f-da58-11f0-abd7-8e99793d3507 as org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@6f1c3f18
+2025-12-16 16:19:58.634 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=null, type=ACCEPTOR_STARTED, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, id=0]] as the server is not initialized
+2025-12-16 16:19:58.634 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221007: Server is now active
+2025-12-16 16:19:58.634 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.33.0 [localhost, nodeID=02ac03d0-da58-11f0-abd7-8e99793d3507] 
+2025-12-16 16:19:58.659 [main] DEBUG o.s.j.a.JmsListenerAnnotationBeanPostProcessor - 1 @JmsListener methods processed on bean 'receiver': {public void hello.Receiver.receiveMessage(hello.Email)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="myFactory", concurrency="", destination="mailbox")]}
+2025-12-16 16:19:58.753 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-16 16:19:58.763 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-12-16 16:19:58.766 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying reconnection attempt 0/1
+2025-12-16 16:19:58.766 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying to connect with connectorFactory=org.apache.activemq.artemis.core.remoting.impl.netty.NettyConnectorFactory@1ad1c363 and currentConnectorConfig: TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost
+2025-12-16 16:19:58.788 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Connector NettyConnector [host=localhost, port=61616, httpEnabled=false, httpUpgradeEnabled=false, useServlet=false, servletPath=/messaging/ActiveMQServlet, sslEnabled=false, useNio=true] using nio
+2025-12-16 16:19:58.793 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Started NIO Netty Connector version 4.1.110.Final to localhost:61616
+2025-12-16 16:19:58.795 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Remote destination: localhost/127.0.0.1:61616
+2025-12-16 16:19:58.818 [Thread-0 (ActiveMQ-client-netty-threads)] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Added ActiveMQClientChannelHandler to Channel with id = 3df6c46a 
+2025-12-16 16:19:58.823 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Connected with the currentConnectorConfig=TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost
+2025-12-16 16:19:58.835 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Reconnection successful
+2025-12-16 16:19:58.835 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - ClientSessionFactoryImpl received backup update for primary/backup pair = TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost / null  but it didn't belong to TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost
+2025-12-16 16:19:58.919 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Established shared JMS Connection: org.apache.activemq.artemis.jms.client.ActiveMQConnection@31c7c281
+2025-12-16 16:19:58.920 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Established shared JMS Connection
+2025-12-16 16:19:58.920 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Resumed paused task: org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker@37d699a1
+2025-12-16 16:19:58.924 [main] INFO  hello.Application - Started Application in 0.991 seconds (process running for 1.127)
+2025-12-16 16:19:58.929 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS Session for mode 1: ActiveMQSession->ClientSessionImpl [name=02e8e5c8-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@19faedcc
+2025-12-16 16:19:58.929 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS Session for mode 0: ActiveMQSession->ClientSessionImpl [name=02e7ad47-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@759d1bf2
+2025-12-16 16:19:58.931 [main] DEBUG org.springframework.jms.core.JmsTemplate - Executing callback on JMS Session: Cached JMS Session: ActiveMQSession->ClientSessionImpl [name=02e8e5c8-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@19faedcc
+2025-12-16 16:19:58.950 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - Requesting 32768 credits on address mailbox, needed = 32768, arriving = 0
+2025-12-16 16:19:58.953 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - Request 32768 credits on address mailbox
+2025-12-16 16:19:58.954 [main] DEBUG o.s.jms.connection.CachingConnectionFactory - Registering cached JMS MessageProducer for destination [ActiveMQQueue[mailbox]]: ActiveMQMessageProducer->org.apache.activemq.artemis.core.client.impl.ClientProducerImpl@67e6eb52
+2025-12-16 16:19:58.956 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG org.apache.activemq.artemis.utils.AutoCreateUtil - The queue mailbox was created automatically
+2025-12-16 16:19:58.971 [main] DEBUG org.springframework.jms.core.JmsTemplate - Sending created message: ActiveMQMessage[null]:PERSISTENT/ClientMessageImpl[messageID=0, durable=true, address=null,userID=null,properties=TypedProperties[_type=hello.Email]]
+2025-12-16 16:19:58.972 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - not asking for -1 credits on mailbox
+2025-12-16 16:19:58.972 [main] DEBUG o.a.a.a.c.client.impl.AbstractProducerCreditsImpl - AfterAcquire 337 credits on address mailbox, pendingCredits=32431
+2025-12-16 16:19:58.990 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Received message of type [class org.apache.activemq.artemis.jms.client.ActiveMQTextMessage] from consumer [ActiveMQMessageConsumer[org.apache.activemq.artemis.core.client.impl.ClientConsumerImpl@30d8194d{consumerContext=ActiveMQConsumerContext{id=0}, queueName=mailbox}]] of session [Cached JMS Session: ActiveMQSession->ClientSessionImpl [name=02e7ad47-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@759d1bf2]
+2025-12-16 16:19:58.990 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.j.l.adapter.MessagingMessageListenerAdapter - Processing [LazyResolutionMessage [rawMessage=ActiveMQMessage[ID:02ef7579-da58-11f0-abd7-8e99793d3507]:PERSISTENT/ClientMessageImpl[messageID=45, durable=true, address=mailbox,userID=02ef7579-da58-11f0-abd7-8e99793d3507,properties=TypedProperties[__AMQ_CID=02dfe515-da58-11f0-abd7-8e99793d3507, _type=hello.Email, _AMQ_ROUTING_TYPE=1]]]]
+2025-12-16 16:19:58.999 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - client ack messageID = 45
+2025-12-16 16:20:28.638 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:20:28.641 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:20:58.582 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:20:58.587 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:20:58.587 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:20:58.635 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:20:58.636 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:21:28.637 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:21:28.639 [Thread-1 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:21:58.585 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Updating counter snapshots
+2025-12-16 16:21:58.587 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:21:58.588 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:21:58.641 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:21:58.642 [Thread-0 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:22:28.646 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ
+2025-12-16 16:22:28.647 [Thread-2 (ActiveMQ-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$6@65bad087)] DEBUG o.a.activemq.artemis.core.server.impl.QueueImpl - Scanning for expires on DLQ done
+2025-12-16 16:22:46.158 [SpringApplicationShutdownHook] DEBUG o.s.jms.connection.CachingConnectionFactory - Closing cached Session: ActiveMQSession->ClientSessionImpl [name=02e8e5c8-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@19faedcc
+2025-12-16 16:22:46.160 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=02e8e5c8-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@19faedcc
+2025-12-16 16:22:46.168 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=02e8e5c8-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@19faedcc
+2025-12-16 16:22:46.178 [SpringApplicationShutdownHook] DEBUG o.s.jms.connection.CachingConnectionFactory - Closing shared JMS Connection: org.apache.activemq.artemis.jms.client.ActiveMQConnection@31c7c281
+2025-12-16 16:22:46.178 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=02dfe516-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=(jms-session=,)]@15d88c10
+2025-12-16 16:22:46.179 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=02dfe516-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=(jms-session=,)]@15d88c10
+2025-12-16 16:22:46.179 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Calling close on session ClientSessionImpl [name=02e7ad47-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@759d1bf2
+2025-12-16 16:22:46.182 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - calling cleanup on ClientSessionImpl [name=02e7ad47-da58-11f0-abd7-8e99793d3507, username=admin, closed=false, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@759d1bf2
+2025-12-16 16:22:46.185 [Thread-1 (ActiveMQ-client-global-threads)] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Failure captured on connectionID=3df6c46a, performing failover or reconnection now
+org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219006: Channel disconnected
+	at org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl.connectionDestroyed(ClientSessionFactoryImpl.java:418)
+	at org.apache.activemq.artemis.core.remoting.impl.netty.NettyConnector$Listener$1.run(NettyConnector.java:1263)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:57)
+	at org.apache.activemq.artemis.utils.actors.OrderedExecutor.doTask(OrderedExecutor.java:32)
+	at org.apache.activemq.artemis.utils.actors.ProcessorBase.executePendingTasks(ProcessorBase.java:68)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at org.apache.activemq.artemis.utils.ActiveMQThreadFactory$1.run(ActiveMQThreadFactory.java:118)
+2025-12-16 16:22:46.186 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Session was already closed, giving up now, this=ClientSessionImpl [name=02e7ad47-da58-11f0-abd7-8e99793d3507, username=admin, closed=true, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=()]@759d1bf2
+2025-12-16 16:22:46.186 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.client.impl.ClientSessionImpl - Session was already closed, giving up now, this=ClientSessionImpl [name=02dfe516-da58-11f0-abd7-8e99793d3507, username=admin, closed=true, factory = org.apache.activemq.artemis.core.client.impl.ClientSessionFactoryImpl@57c69937, metaData=(jms-session=,)]@15d88c10
+2025-12-16 16:22:46.187 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Shutting down JMS listener container
+2025-12-16 16:22:46.187 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Waiting for shutdown of message listener invokers
+2025-12-16 16:22:46.187 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Lowered scheduled invoker count: 0
+2025-12-16 16:22:46.188 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Stopping server ActiveMQServerImpl::name=localhost
+2025-12-16 16:22:46.188 [SpringApplicationShutdownHook] DEBUG o.a.a.a.core.server.cluster.ClusterController - Stopping Cluster Controller 1954761469 for server ActiveMQServerImpl::name=localhost
+2025-12-16 16:22:46.188 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-16 16:22:46.188 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-16 16:22:46.190 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Pausing acceptor org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptor@7da7f925
+2025-12-16 16:22:46.190 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Sending disconnect on client connections
+2025-12-16 16:22:46.192 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-16 16:22:46.192 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=7, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:22:46 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1765873366191, id=0]]@2095730187
+2025-12-16 16:22:46.194 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=7, durable=true, userID=null, priority=0, timestamp=Tue Dec 16 16:22:46 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1765873366191, id=0]]@2095730187 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-16 16:22:46.195 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Mirror controller is being installed
+2025-12-16 16:22:46.196 [SpringApplicationShutdownHook] INFO  org.apache.activemq.artemis.core.server - AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.33.0 [02ac03d0-da58-11f0-abd7-8e99793d3507] stopped, uptime 2 minutes
+2025-12-22 11:12:56.124 [main] INFO  hello.Application - Starting Application using Java 17.0.11 with PID 55552 (/Users/wuxiaohui/git/gss.samples/spring-boot-artemis-logback/target/classes started by wuxiaohui in /Users/wuxiaohui/git/gss.samples/spring-boot-artemis-logback)
+2025-12-22 11:12:56.124 [main] INFO  hello.Application - No active profile set, falling back to 1 default profile: "default"
+2025-12-22 11:12:56.441 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-22 11:12:56.445 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-12-22 11:12:56.446 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-22 11:12:56.446 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-12-22 11:12:56.496 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-22 11:12:56.497 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 358 ms
+2025-12-22 11:12:56.544 [main] DEBUG org.apache.activemq.artemis.utils.UUIDGenerator - using hardware address 3e:ffffffcc:ffffffe4:ffffff80:45:111
+2025-12-22 11:12:56.598 [main] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Starting server ActiveMQServerImpl::name=localhost
+2025-12-22 11:12:56.603 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221000: Primary message broker is starting with configuration Broker Configuration (clustered=false,journalDirectory=/var/folders/cy/c92yv50n5r73dsf7j69_f0tw0000gn/T/artemis-data/journal,bindingsDirectory=data/bindings,largeMessagesDirectory=data/largemessages,pagingDirectory=data/paging)
+2025-12-22 11:12:56.606 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-64
+2025-12-22 11:12:56.607 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-64 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-64 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-22 11:12:56.609 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-64 not found!
+2025-12-22 11:12:56.609 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Loading artemis-native-32
+2025-12-22 11:12:56.610 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - artemis-native-32 -> not possible to load native library
+java.lang.UnsatisfiedLinkError: no artemis-native-32 in java.library.path: /Users/wuxiaohui/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2434)
+	at java.base/java.lang.Runtime.loadLibrary0(Runtime.java:818)
+	at java.base/java.lang.System.loadLibrary(System.java:1993)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.loadLibrary(LibaioContext.java:75)
+	at org.apache.activemq.artemis.nativo.jlibaio.LibaioContext.<clinit>(LibaioContext.java:93)
+	at org.apache.activemq.artemis.core.io.aio.AIOSequentialFileFactory.isSupported(AIOSequentialFileFactory.java:150)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.initialisePart1(ActiveMQServerImpl.java:3269)
+	at org.apache.activemq.artemis.core.server.impl.PrimaryOnlyActivation.run(PrimaryOnlyActivation.java:70)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.internalStart(ActiveMQServerImpl.java:738)
+	at org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl.start(ActiveMQServerImpl.java:628)
+	at org.apache.activemq.artemis.core.server.embedded.EmbeddedActiveMQ.start(EmbeddedActiveMQ.java:134)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeCustomInitMethod(AbstractAutowireCapableBeanFactory.java:1892)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:665)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeansOfType(DefaultListableBeanFactory.java:653)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.startEmbeddedJms(ArtemisConnectionFactoryFactory.java:78)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryFactory.createConnectionFactory(ArtemisConnectionFactoryFactory.java:66)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration.createJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:60)
+	at org.springframework.boot.autoconfigure.jms.artemis.ArtemisConnectionFactoryConfiguration$SimpleConnectionFactoryConfiguration$CachingConnectionFactoryConfiguration.cachingJmsConnectionFactory(ArtemisConnectionFactoryConfiguration.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:140)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:542)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1337)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1167)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.processJmsListener(JmsListenerAnnotationBeanPostProcessor.java:294)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$1(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.lambda$postProcessAfterInitialization$2(JmsListenerAnnotationBeanPostProcessor.java:248)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:721)
+	at org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor.postProcessAfterInitialization(JmsListenerAnnotationBeanPostProcessor.java:247)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:438)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1791)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:962)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+2025-12-22 11:12:56.610 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Library artemis-native-32 not found!
+2025-12-22 11:12:56.610 [main] DEBUG o.a.activemq.artemis.nativo.jlibaio.LibaioContext - Couldn't locate LibAIO Wrapper
+2025-12-22 11:12:56.611 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221045: libaio is not available, switching the configuration into NIO
+2025-12-22 11:12:56.627 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221057: Global Max Size is being adjusted to 1/2 of the JVM max size (-Xmx). being defined as 4831838208
+2025-12-22 11:12:56.634 [main] DEBUG o.a.a.a.core.server.cluster.ClusterController - Starting Cluster Controller 1954761469 for server ActiveMQServerImpl::name=localhost
+2025-12-22 11:12:56.637 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221043: Protocol module found: [artemis-server]. Adding protocol support for: CORE
+2025-12-22 11:12:56.648 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: null
+2025-12-22 11:12:56.648 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@7bdf61ad
+2025-12-22 11:12:56.648 [main] INFO  org.apache.activemq.audit.base - AMQ601138: User anonymous@unknown is getting notification info on target resource: ActiveMQServerImpl::name=localhost
+2025-12-22 11:12:56.653 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering broker as org.apache.activemq.artemis.core.management.impl.ActiveMQServerControlImpl@7bdf61ad
+2025-12-22 11:12:56.653 [main] INFO  org.apache.activemq.artemis.core.server - AMQ224092: Despite disabled persistence, page files will be persisted.
+2025-12-22 11:12:56.660 [main] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Page Transactions during rebuildCounters:
+2025-12-22 11:12:56.661 [Thread-0 (ActiveMQ-PageExecutor-server-org.apache.activemq.artemis.core.server.impl.ActiveMQServerImpl$9@428bdd72)] DEBUG o.a.a.artemis.core.paging.impl.PagingManagerImpl - Complete cleanupPageTransactions with no orphaned records found
+2025-12-22 11:12:56.661 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address DLQ supporting [ANYCAST]
+2025-12-22 11:12:56.662 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1450131a
+2025-12-22 11:12:56.663 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.DLQ as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@1450131a
+2025-12-22 11:12:56.663 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ"
+2025-12-22 11:12:56.664 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue DLQ on address DLQ
+2025-12-22 11:12:56.691 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=DLQ, queue=QueueImpl[name=DLQ, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@3e546734, filter=null, name=DLQ, clusterName=DLQ1cd339d0-dee4-11f0-8fc3-3ecce480456f] from server ActiveMQServerImpl::name=localhost
+2025-12-22 11:12:56.693 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=1ce11c81-dee4-11f0-8fc3-3ecce480456f, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=DLQ, _AMQ_Distance=0, _AMQ_Address=DLQ, _AMQ_Binding_ID=1, _AMQ_ClusterName=DLQ1cd339d0-dee4-11f0-8fc3-3ecce480456f]] as the server is not initialized
+2025-12-22 11:12:56.696 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.DLQ as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@100ad67e
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="DLQ",subcomponent=queues,routing-type="anycast",queue="DLQ"
+2025-12-22 11:12:56.701 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221080: Deploying address ExpiryQueue supporting [ANYCAST]
+2025-12-22 11:12:56.701 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@713a35c5
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@713a35c5
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue"
+2025-12-22 11:12:56.701 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221003: Deploying ANYCAST queue ExpiryQueue on address ExpiryQueue
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - ClusterCommunication::Sending notification for addBinding LocalQueueBinding [address=ExpiryQueue, queue=QueueImpl[name=ExpiryQueue, postOffice=PostOfficeImpl [server=ActiveMQServerImpl::name=localhost], temp=false]@62aeddc8, filter=null, name=ExpiryQueue, clusterName=ExpiryQueue1cd339d0-dee4-11f0-8fc3-3ecce480456f] from server ActiveMQServerImpl::name=localhost
+2025-12-22 11:12:56.701 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=1ce2a322-dee4-11f0-8fc3-3ecce480456f, type=BINDING_ADDED, properties=TypedProperties[_AMQ_Binding_Type=0, _AMQ_RoutingName=ExpiryQueue, _AMQ_Distance=0, _AMQ_Address=ExpiryQueue, _AMQ_Binding_ID=4, _AMQ_ClusterName=ExpiryQueue1cd339d0-dee4-11f0-8fc3-3ecce480456f]] as the server is not initialized
+2025-12-22 11:12:56.701 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.QueueControlImpl@11787b64
+2025-12-22 11:12:56.702 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering queue.ExpiryQueue as org.apache.activemq.artemis.core.management.impl.QueueControlImpl@11787b64
+2025-12-22 11:12:56.702 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered queue org.apache.activemq.artemis:broker="localhost",component=addresses,address="ExpiryQueue",subcomponent=queues,routing-type="anycast",queue="ExpiryQueue"
+2025-12-22 11:12:56.702 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7d0100ea
+2025-12-22 11:12:56.702 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering address.activemq.notifications as org.apache.activemq.artemis.core.management.impl.AddressControlImpl@7d0100ea
+2025-12-22 11:12:56.702 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - registered address org.apache.activemq.artemis:broker="localhost",component=addresses,address="activemq.notifications"
+2025-12-22 11:12:56.718 [main] INFO  org.apache.activemq.audit.base - AMQ601019: User anonymous@unknown is getting mbean info on target resource: org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@6f1c3f18
+2025-12-22 11:12:56.718 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - Registering acceptor.1ccad55f-dee4-11f0-8fc3-3ecce480456f as org.apache.activemq.artemis.core.management.impl.AcceptorControlImpl@6f1c3f18
+2025-12-22 11:12:56.720 [main] DEBUG o.a.a.a.c.s.management.impl.ManagementServiceImpl - ignoring message Notification[uid=null, type=ACCEPTOR_STARTED, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, id=0]] as the server is not initialized
+2025-12-22 11:12:56.721 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221007: Server is now active
+2025-12-22 11:12:56.721 [main] INFO  org.apache.activemq.artemis.core.server - AMQ221001: Apache ActiveMQ Artemis Message Broker version 2.33.0 [localhost, nodeID=1cd339d0-dee4-11f0-8fc3-3ecce480456f] 
+2025-12-22 11:12:56.745 [main] DEBUG o.s.j.a.JmsListenerAnnotationBeanPostProcessor - 1 @JmsListener methods processed on bean 'receiver': {public void hello.Receiver.receiveMessage(hello.Email)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="myFactory", concurrency="", destination="mailbox")]}
+2025-12-22 11:12:56.846 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-12-22 11:12:56.874 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-12-22 11:12:56.877 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying reconnection attempt 0/1
+2025-12-22 11:12:56.877 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying to connect with connectorFactory=org.apache.activemq.artemis.core.remoting.impl.netty.NettyConnectorFactory@1ad1c363 and currentConnectorConfig: TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost
+2025-12-22 11:12:56.901 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Connector NettyConnector [host=localhost, port=61616, httpEnabled=false, httpUpgradeEnabled=false, useServlet=false, servletPath=/messaging/ActiveMQServlet, sslEnabled=false, useNio=true] using nio
+2025-12-22 11:12:56.906 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Started NIO Netty Connector version 4.1.110.Final to localhost:61616
+2025-12-22 11:12:56.907 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Remote destination: localhost/127.0.0.1:61616
+2025-12-22 11:12:56.926 [Thread-0 (ActiveMQ-client-netty-threads)] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Added ActiveMQClientChannelHandler to Channel with id = 8b969e4a 
+2025-12-22 11:12:56.931 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Connector towards NettyConnector [host=localhost, port=61616, httpEnabled=false, httpUpgradeEnabled=false, useServlet=false, servletPath=/messaging/ActiveMQServlet, sslEnabled=false, useNio=true] failed
+2025-12-22 11:12:56.932 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - no connection been made, returning null
+2025-12-22 11:12:56.935 [main] INFO  o.s.jms.connection.CachingConnectionFactory - Encountered a JMSException - resetting the underlying JMS Connection
+jakarta.jms.JMSException: Failed to create session factory
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnectionInternal(ActiveMQConnectionFactory.java:915)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:314)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:309)
+	at org.springframework.jms.connection.SingleConnectionFactory.doCreateConnection(SingleConnectionFactory.java:452)
+	at org.springframework.jms.connection.SingleConnectionFactory.initConnection(SingleConnectionFactory.java:414)
+	at org.springframework.jms.connection.SingleConnectionFactory.getConnection(SingleConnectionFactory.java:328)
+	at org.springframework.jms.connection.SingleConnectionFactory.createConnection(SingleConnectionFactory.java:243)
+	at org.springframework.jms.support.JmsAccessor.createConnection(JmsAccessor.java:211)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.createSharedConnection(AbstractJmsListeningContainer.java:405)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.establishSharedConnection(AbstractJmsListeningContainer.java:375)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer.establishSharedConnection(DefaultMessageListenerContainer.java:881)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.doStart(AbstractJmsListeningContainer.java:287)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.start(AbstractJmsListeningContainer.java:272)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer.start(DefaultMessageListenerContainer.java:675)
+	at org.springframework.jms.config.JmsListenerEndpointRegistry.startIfNecessary(JmsListenerEndpointRegistry.java:242)
+	at org.springframework.jms.config.JmsListenerEndpointRegistry.start(JmsListenerEndpointRegistry.java:205)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:288)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:471)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:260)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:981)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+Caused by: org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219007: Cannot connect to server(s). Tried with all available servers.
+	at org.apache.activemq.artemis.core.client.impl.ServerLocatorImpl.createSessionFactory(ServerLocatorImpl.java:735)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnectionInternal(ActiveMQConnectionFactory.java:913)
+	... 29 common frames omitted
+2025-12-22 11:12:56.935 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Could not establish shared JMS Connection - leaving it up to asynchronous invokers to establish a Connection as soon as possible
+jakarta.jms.JMSException: Failed to create session factory
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnectionInternal(ActiveMQConnectionFactory.java:915)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:314)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnection(ActiveMQConnectionFactory.java:309)
+	at org.springframework.jms.connection.SingleConnectionFactory.doCreateConnection(SingleConnectionFactory.java:452)
+	at org.springframework.jms.connection.SingleConnectionFactory.initConnection(SingleConnectionFactory.java:414)
+	at org.springframework.jms.connection.SingleConnectionFactory.getConnection(SingleConnectionFactory.java:328)
+	at org.springframework.jms.connection.SingleConnectionFactory.createConnection(SingleConnectionFactory.java:243)
+	at org.springframework.jms.support.JmsAccessor.createConnection(JmsAccessor.java:211)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.createSharedConnection(AbstractJmsListeningContainer.java:405)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.establishSharedConnection(AbstractJmsListeningContainer.java:375)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer.establishSharedConnection(DefaultMessageListenerContainer.java:881)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.doStart(AbstractJmsListeningContainer.java:287)
+	at org.springframework.jms.listener.AbstractJmsListeningContainer.start(AbstractJmsListeningContainer.java:272)
+	at org.springframework.jms.listener.DefaultMessageListenerContainer.start(DefaultMessageListenerContainer.java:675)
+	at org.springframework.jms.config.JmsListenerEndpointRegistry.startIfNecessary(JmsListenerEndpointRegistry.java:242)
+	at org.springframework.jms.config.JmsListenerEndpointRegistry.start(JmsListenerEndpointRegistry.java:205)
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStart(DefaultLifecycleProcessor.java:288)
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.start(DefaultLifecycleProcessor.java:471)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.context.support.DefaultLifecycleProcessor.startBeans(DefaultLifecycleProcessor.java:260)
+	at org.springframework.context.support.DefaultLifecycleProcessor.onRefresh(DefaultLifecycleProcessor.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:981)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at hello.Application.main(Application.java:43)
+Caused by: org.apache.activemq.artemis.api.core.ActiveMQNotConnectedException: AMQ219007: Cannot connect to server(s). Tried with all available servers.
+	at org.apache.activemq.artemis.core.client.impl.ServerLocatorImpl.createSessionFactory(ServerLocatorImpl.java:735)
+	at org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory.createConnectionInternal(ActiveMQConnectionFactory.java:913)
+	... 29 common frames omitted
+2025-12-22 11:12:56.936 [main] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Resumed paused task: org.springframework.jms.listener.DefaultMessageListenerContainer$AsyncMessageListenerInvoker@37d699a1
+2025-12-22 11:12:56.939 [main] INFO  hello.Application - Started Application in 0.978 seconds (process running for 1.1)
+2025-12-22 11:12:56.941 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying reconnection attempt 0/1
+2025-12-22 11:12:56.941 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Trying to connect with connectorFactory=org.apache.activemq.artemis.core.remoting.impl.netty.NettyConnectorFactory@699e0bf0 and currentConnectorConfig: TransportConfiguration(name=null, factory=org-apache-activemq-artemis-core-remoting-impl-netty-NettyConnectorFactory)?port=61616&host=localhost
+2025-12-22 11:12:56.941 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Connector NettyConnector [host=localhost, port=61616, httpEnabled=false, httpUpgradeEnabled=false, useServlet=false, servletPath=/messaging/ActiveMQServlet, sslEnabled=false, useNio=true] using nio
+2025-12-22 11:12:56.941 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Started NIO Netty Connector version 4.1.110.Final to localhost:61616
+2025-12-22 11:12:56.941 [main] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Remote destination: localhost/127.0.0.1:61616
+2025-12-22 11:12:56.941 [Thread-2 (ActiveMQ-client-netty-threads)] DEBUG o.a.a.a.core.remoting.impl.netty.NettyConnector - Added ActiveMQClientChannelHandler to Channel with id = 8343f356 
+2025-12-22 11:12:56.942 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - Connector towards NettyConnector [host=localhost, port=61616, httpEnabled=false, httpUpgradeEnabled=false, useServlet=false, servletPath=/messaging/ActiveMQServlet, sslEnabled=false, useNio=true] failed
+2025-12-22 11:12:56.942 [main] DEBUG o.a.a.a.core.client.impl.ClientSessionFactoryImpl - no connection been made, returning null
+2025-12-22 11:13:00.591 [org.springframework.jms.JmsListenerEndpointContainer#0-1] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - JMS message listener invoker needs to establish shared Connection
+2025-12-22 11:13:01.458 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Shutting down JMS listener container
+2025-12-22 11:13:01.458 [SpringApplicationShutdownHook] DEBUG o.s.jms.listener.DefaultMessageListenerContainer - Waiting for shutdown of message listener invokers
+2025-12-22 11:13:01.458 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Stopping server ActiveMQServerImpl::name=localhost
+2025-12-22 11:13:01.459 [SpringApplicationShutdownHook] DEBUG o.a.a.a.core.server.cluster.ClusterController - Stopping Cluster Controller 1954761469 for server ActiveMQServerImpl::name=localhost
+2025-12-22 11:13:01.460 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 1 for queue = DLQ, value = 0, size = 0
+2025-12-22 11:13:01.461 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.p.c.impl.PageSubscriptionCounterImpl - Replacing page-counter record = -1 by record = -1 on subscriptionID = 4 for queue = ExpiryQueue, value = 0, size = 0
+2025-12-22 11:13:01.464 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Pausing acceptor org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptor@145bbfd
+2025-12-22 11:13:01.464 [SpringApplicationShutdownHook] DEBUG o.a.a.a.c.remoting.server.impl.RemotingServiceImpl - Sending disconnect on client connections
+2025-12-22 11:13:01.478 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - PostOffice::simpleRoute null as bindings
+2025-12-22 11:13:01.479 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Couldn't find any bindings for address=activemq.notifications on message=CoreMessage[messageID=7, durable=true, userID=null, priority=0, timestamp=Mon Dec 22 11:13:01 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1766373181478, id=0]]@1500124906
+2025-12-22 11:13:01.484 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.postoffice.impl.PostOfficeImpl - Message CoreMessage[messageID=7, durable=true, userID=null, priority=0, timestamp=Mon Dec 22 11:13:01 CST 2025, expiration=0, durable=true, address=activemq.notifications, size=388, properties=TypedProperties[factory=org.apache.activemq.artemis.core.remoting.impl.invm.InVMAcceptorFactory, _AMQ_NotifType=ACCEPTOR_STOPPED, _AMQ_NotifTimestamp=1766373181478, id=0]]@1500124906 is not going anywhere as it didn't have a binding on address:activemq.notifications
+2025-12-22 11:13:01.484 [SpringApplicationShutdownHook] DEBUG o.a.a.artemis.core.server.impl.ActiveMQServerImpl - Mirror controller is being installed
+2025-12-22 11:13:01.485 [SpringApplicationShutdownHook] INFO  org.apache.activemq.artemis.core.server - AMQ221002: Apache ActiveMQ Artemis Message Broker version 2.33.0 [1cd339d0-dee4-11f0-8fc3-3ecce480456f] stopped, uptime 4.887 seconds
