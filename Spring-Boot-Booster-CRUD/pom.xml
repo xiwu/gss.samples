@@ -30,7 +30,7 @@
     <arquillian.version>1.4.0.Final</arquillian.version>
     <awaitility.version>3.1.0</awaitility.version>
     <openjdk18-openshift.version>1.3</openjdk18-openshift.version>
-    <postgresql.version>9.4.1212</postgresql.version>
+    <postgresql.version>42.5.0.redhat-00001</postgresql.version>
     <rest-assured.version>3.1.0</rest-assured.version>
     <spring-boot.version>1.5.17.RELEASE</spring-boot.version>
     <spring-boot-bom.version>1.5.17.SP1</spring-boot-bom.version>
